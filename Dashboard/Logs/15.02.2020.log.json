@@ -1,0 +1,41 @@
+[
+    {
+        "session_id": "5e48579e40395",
+        "timestamp": 1581799326.266406,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1581799326.263458
+            }
+        ]
+    },
+    {
+        "session_id": "5e4862e680f9b",
+        "timestamp": 1581802214.529522,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1581802214.529259
+            }
+        ]
+    },
+    {
+        "session_id": "5e48650c7e7bc",
+        "timestamp": 1581802764.519371,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1581802764.51913
+            }
+        ]
+    }
+]

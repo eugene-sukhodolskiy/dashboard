@@ -1,0 +1,119 @@
+[
+    {
+        "session_id": "5e4e8947380b0",
+        "timestamp": 1582205255.234074,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582205255.23321
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e8a79eaf21",
+        "timestamp": 1582205561.964289,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582205561.96403
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e8abe89067",
+        "timestamp": 1582205630.561641,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582205630.561516
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e8be39faad",
+        "timestamp": 1582205923.654909,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582205923.65445
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e8ff12ca7d",
+        "timestamp": 1582206961.184636,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582206961.183276
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e9088b345e",
+        "timestamp": 1582207112.735403,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582207112.734706
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e919fb4c0e",
+        "timestamp": 1582207391.741118,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582207391.740585
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e91b0ae064",
+        "timestamp": 1582207408.713988,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582207408.713134
+            }
+        ]
+    },
+    {
+        "session_id": "5e4e91b85af26",
+        "timestamp": 1582207416.373569,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582207416.372798
+            }
+        ]
+    }
+]

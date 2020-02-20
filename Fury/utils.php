@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+use Fury\Kernel\AppContainer;
 
 function dd($var, $die_flag = true){
 	ob_start();
@@ -16,45 +18,56 @@ function dd($var, $die_flag = true){
 				background-color: #333;
 				color: white;
 			}
+
 			.dd-container *{
 		    font-family: Arial;
   			letter-spacing: .8px;
 			}
+
 			.dd-line{
 				padding: 5px 20px;
 			}
+
 			.dd-margin{
 				margin-left: 30px;
 			}
+
 			.dd-arrow{
 				font-weight: bold;
 				padding: 0 10px;
 				color: #D9CB04;
 			}
+
 			.dd-key{
 				font-weight: bold;
 				padding: 0 3px;
 				color: #038C8C;
 			}
+
 			.dd-key-border{
 				color: #026873;
 			}
+
 			.dd-keyword{
 				font-weight: bold;
 				color: #D9B504;
 				margin-right: 5px;
 			}
+
 			.dd-brackets-content{
 				font-weight: bold;
 				padding: 0 3px;
 				color: #F28D77;
 			}
+
 			.dd-block{
 				display: none;
 			}
+
 			.dd-block.show{
 				display: block;
 			}
+
 			.dd-btn{
 		    display: inline-block;
 		    color: #7ED955;
@@ -69,6 +82,7 @@ function dd($var, $die_flag = true){
 		    line-height: 18px;
 		    border: 2px solid #7ED955;
 			}
+
 			.dd-block-show,
 			.dd-block-hide{
         margin-top: -29px;
@@ -76,6 +90,7 @@ function dd($var, $die_flag = true){
 		    left: -10px;
 		    float: right;
 			}
+
 			.dd-block-hide{
 				line-height: 16px;
 				color: #F28D77;
@@ -96,6 +111,7 @@ function dd($var, $die_flag = true){
 					block.classList.add("show");
 				}
 			}
+
 			let btnsHide = document.getElementsByClassName("dd-block-hide");
 			for(let i in btnsHide){
 				let btn = btnsHide[i];
@@ -106,6 +122,7 @@ function dd($var, $die_flag = true){
 				}
 			}
 		}
+
 		ddJS();
 	</script>';
 
@@ -172,4 +189,20 @@ function dd($var, $die_flag = true){
 	$dump .= '</div>' . $js;
 
 	echo $die_flag ? die($dump) : $dump;
+}
+
+function app(){
+	return AppContainer::app();
+}
+
+function bootstrap(){
+	return AppContainer::bootstrap();
+}
+
+function events(){
+	return AppContainer::events();
+}
+
+function logging(){
+	return AppContainer::logging();
 }
