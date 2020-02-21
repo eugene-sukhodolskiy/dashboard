@@ -1,7 +1,10 @@
 {
 	"name": "Dashboard",
-	"ver": "1.0",
+	"ver": "0.0",
 	"author": "E. Sukhodolskiy",
-	"release_url": "https://google.com",
-	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard"
+	"release_url": "",
+	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard",
+	"tags": ["Tag1", "Tag2"],
+	"Status": "Open",
+	"Type": "web"
 }
