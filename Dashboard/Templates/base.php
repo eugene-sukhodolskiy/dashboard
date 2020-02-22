@@ -14,6 +14,8 @@
 </head>
 <body>
 
+	<div class="global-popup-bg"></div>
+
 	<div class="grid">
 		<?= $this -> join('layouts/header.php', $this -> parent() -> get_inside_data()); ?>
 		<?= $this -> content() ?>
