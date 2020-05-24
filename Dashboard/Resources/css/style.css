@@ -188,3 +188,14 @@ header .total{
 .project .description .project-control .button{
 	color: var(--text-color);
 }
+
+.project .favicon{
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	margin-left: 15px;
+	position: relative;	
+	top: -3px;
+	box-shadow: 0 0 4px #888;
+	margin-left: 0;
+}

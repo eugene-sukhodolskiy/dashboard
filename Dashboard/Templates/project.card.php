@@ -1,24 +1,36 @@
 <div class="project">
 	<h3 class="project-title">
-		<?= $project['project'] ? $project['project']['name'] : $project['name'] ?>
+		<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
+			<img src="<?= $project['project']['favicon'] ?>" class="favicon">
+		<? endif ?>
+		<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 	</h3>
 
 	<div class="description">
 		<h3 class="project-title">
-			<?= $project['project'] ? $project['project']['name'] : $project['name'] ?>
+			<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
+				<img src="<?= $project['project']['favicon'] ?>" class="favicon">
+			<? endif ?>
+			<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 		</h3>
 		<datetime class="last-update">
 			Updated: <?= date("d.m.Y H:i", $project['last_update']); ?>
 		</datetime>
-		<?php if($project['project']): ?>
-			<p class="ver">
-				Version: <?= $project['project']['ver'] ?>
-			</p>
-			<p class="author">
-				Author: <?= $project['project']['author'] ?>
-			</p>
 
-			<? if($project['project']['release_url']): ?>
+		<?php if($project['project']): ?>
+			<? if(isset($project['project']['ver'])): ?>
+				<p class="ver">
+					Version: <?= $project['project']['ver'] ?>
+				</p>
+			<? endif ?>
+
+			<? if(isset($project['project']['author'])): ?>
+				<p class="author">
+					Author: <?= $project['project']['author'] ?>
+				</p>
+			<? endif ?>
+
+			<? if(isset($project['project']['release_url'])): ?>
 				<p class="release">
 					Release: 
 					<span class="incomplete release-link">
@@ -29,14 +41,16 @@
 				</p>
 			<? endif; ?>
 			
-			<p class="git">
-				Git: 
-				<span class="incomplete git-link">
-					<a href="<?= $project['project']['git_url'] ?>" target="_blank">
-						<?= $project['project']['git_url'] ?>
-					</a>
-				</span>
-			</p>
+			<? if(isset($project['project']['git_url'])): ?>
+				<p class="git">
+					Git: 
+					<span class="incomplete git-link">
+						<a href="<?= $project['project']['git_url'] ?>" target="_blank">
+							<?= $project['project']['git_url'] ?>
+						</a>
+					</span>
+				</p>
+			<? endif ?>
 		<?php endif ?>
 		<div class="project-control">
 			<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
