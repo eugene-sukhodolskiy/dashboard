@@ -190,6 +190,7 @@ header .total{
 }
 
 .project .favicon{
+	background-color: grey;
 	width: 24px;
 	height: 24px;
 	display: inline-block;

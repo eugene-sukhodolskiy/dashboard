@@ -1,10 +1,10 @@
 {
 	"name": "Dashboard",
-	"ver": "0.0",
+	"ver": "0.1",
 	"author": "E. Sukhodolskiy",
 	"release_url": "",
 	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard",
-	"tags": ["Tag1", "Tag2"],
-	"status": "Open",
+	"tags": ["fury", "personal", "html", "css", "php", "js"],
+	"status": "open",
 	"type": "web"
 }
