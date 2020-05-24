@@ -43,6 +43,17 @@ class Projects extends \Dashboard\Middleware\Model{
 			}
 		}
 
+		if(!isset($project['git_url'])){
+			$git_conf = $path . DIRECTORY_SEPARATOR . '.git/config';
+			if(file_exists($git_conf)){
+				$git_conf_file = file_get_contents($git_conf);
+				$sep = '.git';
+				list($git_conf_file) = explode($sep, $git_conf_file);
+				list(, $git_url) = explode('url = ', $git_conf_file);
+				$project['git_url'] = $git_url;
+			}
+		}
+
 		return $project;
 	}
 
