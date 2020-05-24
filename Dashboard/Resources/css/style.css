@@ -200,3 +200,31 @@ header .total{
 	box-shadow: 0 0 7px #555;
 	margin-left: 0;
 }
+
+.project-card-info{
+	position: relative;
+	top: -20px;
+}
+
+.project .description .project-card-info{
+	position: static;
+}
+
+.project .status{
+	padding: 4px 8px;
+	text-transform: lowercase;
+	background-color: rgba(0, 0, 0, .4);
+	border-radius: 3px;
+}
+
+.project .status::first-letter{
+	text-transform: uppercase;
+}
+
+.project .s-open{
+	color: #1de9b6;
+}
+
+.project .s-closed{
+	color: #f9a825;
+}

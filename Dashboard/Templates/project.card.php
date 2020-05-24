@@ -5,7 +5,13 @@
 		<? endif ?>
 		<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 	</h3>
+	<div class="project-card-info">
+		<? if(isset($project['project']['status'])): ?>
+			<span class="status s-<?= strtolower($project['project']['status']) ?>"><?= $project['project']['status'] ?></span>
+		<? endif ?>
+	</div>
 
+	<!-- DESCRIPTION FOR POPUP -->
 	<div class="description">
 		<h3 class="project-title">
 			<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
@@ -52,10 +58,16 @@
 				</p>
 			<? endif ?>
 		<?php endif ?>
+		<div class="project-card-info">
+			<? if(isset($project['project']['status'])): ?>
+				<span class="status s-<?= strtolower($project['project']['status']) ?>"><?= $project['project']['status'] ?></span>
+			<? endif ?>
+		</div>
 		<div class="project-control">
 			<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
 		</div>
 	</div>
+	<!-- END DESCRIPTION -->
 
 	<div class="project-control">
 		<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
