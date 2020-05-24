@@ -6,12 +6,21 @@ $(document).ready(function(){
 	});
 
 	$('.project').on('click', function(e){
-		$(this).find('.description').addClass('show');
-		$('.global-popup-bg').addClass('show');
+		let btnOpenProject = $(this).find('.open-project');
+		if(btnOpenProject.hasClass('no-info')){
+			btnOpenProject.removeClass('no-info');
+		}else{
+			$(this).find('.description').addClass('show');
+			$('.global-popup-bg').addClass('show');
+		}
 	});
 
 	$('.global-popup-bg').on('click', function(){
 		$('.project .description.show').removeClass('show');
 		$(this).removeClass('show');
+	});
+
+	$('.open-project').on('click', function(){
+		$(this).addClass('no-info');
 	});
 });

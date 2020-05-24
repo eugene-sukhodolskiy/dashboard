@@ -39,11 +39,11 @@
 			</p>
 		<?php endif ?>
 		<div class="project-control">
-			<a class="button" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+			<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
 		</div>
 	</div>
 
 	<div class="project-control">
-		<a class="button" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+		<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
 	</div>
 </div>

@@ -128,5 +128,18 @@
                 "timestamp": 1582207680.774521
             }
         ]
+    },
+    {
+        "session_id": "5e4e9813ecc7f",
+        "timestamp": 1582209043.970716,
+        "logs": [
+            {
+                "class": "CallControl",
+                "meth": "call_for_simple_func",
+                "title": "Calling controller class and method",
+                "message": "URI",
+                "timestamp": 1582209043.970189
+            }
+        ]
     }
 ]
