@@ -1,4 +1,5 @@
 <? $this -> extends_from('base') ?>
+<canvas id="service-canv" width="1000" height="1000" style="display: none"></canvas>
 
 <div class="row">
 	<?php foreach($projects as $project): ?>

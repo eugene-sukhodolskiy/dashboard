@@ -42,7 +42,7 @@ class Routes{
 	}
 
 	protected function get_routes(){
-
+		$this -> router -> get(['url'], "{$this -> cn}\\Dashboard@throw_img");
 	}
 
 	protected function post_routes(){

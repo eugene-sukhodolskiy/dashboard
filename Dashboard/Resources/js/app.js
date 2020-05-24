@@ -23,4 +23,14 @@ $(document).ready(function(){
 	$('.open-project').on('click', function(){
 		$(this).addClass('no-info');
 	});
+
+	$('.project').each(function(){
+		let fav = $(this).find('.favicon', 0);
+		if(fav.length){
+			let project = $(this);
+			new Color(fav, function(c){
+				project.css('background-color', 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)');
+			});
+		}
+	});
 });

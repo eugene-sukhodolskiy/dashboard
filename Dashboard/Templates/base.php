@@ -5,11 +5,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="/Dashboard/Resources//libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/Dashboard/Resources/libs/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/Dashboard/Resources/css/style.css">
 	<link rel="icon" href="/favicon.png">
 
 	<script type="text/javascript" src="/Dashboard/Resources/libs/jquery.js"></script>
+	<script type="text/javascript" src="/Dashboard/Resources/js/color.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/app.js"></script>
 </head>
 <body>
