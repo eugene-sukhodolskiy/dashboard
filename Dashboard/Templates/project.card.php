@@ -9,6 +9,12 @@
 		<? if(isset($project['project']['status'])): ?>
 			<span class="status s-<?= strtolower($project['project']['status']) ?>"><?= $project['project']['status'] ?></span>
 		<? endif ?>
+		<? if(isset($project['project']['tags'])): ?>
+			<? foreach($project['project']['tags'] as $i => $tag): ?>
+				<? if($i == 5) break; ?>
+				<a href="#" class="tag"><?= $tag ?></a>
+			<? endforeach ?>
+		<? endif ?>
 	</div>
 
 	<!-- DESCRIPTION FOR POPUP -->
@@ -61,6 +67,11 @@
 		<div class="project-card-info">
 			<? if(isset($project['project']['status'])): ?>
 				<span class="status s-<?= strtolower($project['project']['status']) ?>"><?= $project['project']['status'] ?></span>
+			<? endif ?>
+			<? if(isset($project['project']['tags'])): ?>
+				<? foreach($project['project']['tags'] as $tag): ?>
+					<a href="#" class="tag"><?= $tag ?></a>
+				<? endforeach ?>
 			<? endif ?>
 		</div>
 		<div class="project-control">
