@@ -238,3 +238,8 @@ header .total{
 .project .tag:hover{
 	text-decoration: none;
 }
+
+.button.small-button{
+	padding: 1px 7px;
+  background-color: #0277bd;
+}

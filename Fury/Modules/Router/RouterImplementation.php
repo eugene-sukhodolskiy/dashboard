@@ -41,7 +41,7 @@ trait RouterImplementation{
 		$uri_parts = explode('/', $uri_path);
 		$params = [];
 		foreach ($route_template_parts as $i => $part) {
-			if($part[0] != '$'){
+			if(strlen($part) and $part[0] != '$'){
 				continue;
 			}
 			$params[mb_substr($part, 1, strlen($part))] = $uri_parts[$i];
@@ -116,7 +116,7 @@ trait RouterImplementation{
 
 			$flag = true;
 			foreach ($route_parts as $i => $part) {
-				if($part[0] == '$'){
+				if(strlen($part) and $part[0] == '$'){
 					continue;
 				}
 				if($part != $uri_parts[$i]){

@@ -39,6 +39,7 @@ class Routes{
 
 	protected function uri_routes(){
 		$this -> router -> uri('/', "{$this -> cn}\\Dashboard@board");
+		$this -> router -> uri('/status/$filter_status', "{$this -> cn}\\Dashboard@board");
 	}
 
 	protected function get_routes(){

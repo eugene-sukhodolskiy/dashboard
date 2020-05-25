@@ -5,10 +5,14 @@ namespace Dashboard\Controllers;
 use Dashboard\Models\Projects;
 
 class Dashboard extends \Dashboard\Middleware\Controller{
-	public function board(){
+	public function board($filter_status = false){
 		$projects = new Projects();
+		$filters = [
+			'status' => $filter_status
+		];
 		return $this -> new_template() -> make('project.list', [
-			'projects' => $projects -> get_projects_list()
+			'projects' => $projects -> get_projects_list($filters),
+			'filters' => $filters
 		]);
 	}
 

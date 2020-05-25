@@ -57,7 +57,7 @@ class Projects extends \Dashboard\Middleware\Model{
 		return $project;
 	}
 
-	public function get_projects_list(){
+	public function get_projects_list($filters){
 		$dirs = scandir(FCONF['projects_folder']);
 		$projects = [];
 		foreach ($dirs as $i => $item) {
@@ -80,6 +80,14 @@ class Projects extends \Dashboard\Middleware\Model{
 		usort($projects, function($a, $b){
 			return $b['last_update'] - $a['last_update'];
 		});
+
+		if(isset($filters['status']) and $filters['status']){
+			foreach($projects as $i => $project){
+				if(!isset($project['project']['status']) or $project['project']['status'] != $filters['status']){
+					unset($projects[$i]);
+				}
+			}
+		}
 
 		return $projects;
 	}
