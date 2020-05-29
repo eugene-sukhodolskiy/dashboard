@@ -1,4 +1,7 @@
-<div class="project">
+<div class="project" 
+	data-title="<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>"
+	data-tags='<?= (isset($project["project"]["tags"]) and is_array($project["project"]["tags"])) ? json_encode($project["project"]["tags"]) : json_encode([])  ?>'
+>
 	<h3 class="project-title">
 		<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
 			<img src="<?= $project['project']['favicon'] ?>" class="favicon">

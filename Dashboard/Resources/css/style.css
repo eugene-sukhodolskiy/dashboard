@@ -243,3 +243,7 @@ header .total{
 	padding: 1px 7px;
   background-color: #0277bd;
 }
+
+input.search{
+	margin-top: 15px;
+}

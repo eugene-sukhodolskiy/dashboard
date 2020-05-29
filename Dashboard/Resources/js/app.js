@@ -33,4 +33,8 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	searchObject = new Search('input.search', '.project');
 });
+
+let searchObject;
