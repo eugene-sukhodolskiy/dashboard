@@ -1,8 +1,9 @@
 class Search{
-	constructor(searchInputSelector, cardSelector){
+	constructor(searchInputSelector, cardSelector, statusControlContainerSelector){
 		if(!String.prototype.trim){String.prototype.trim = function(){return this.replace(/^s+|s+$/g,'');}}
 		this.input = $(searchInputSelector);
 		this.cards = $(cardSelector);
+		this.statusControlContainer = $(statusControlContainerSelector);
 		this.cardsData = [];
 		this.init();
 	}
@@ -14,6 +15,7 @@ class Search{
 			let cardData = {
 				title: $(this.cards[i]).attr('data-title').toLowerCase(),
 				tags: JSON.parse($(this.cards[i]).attr('data-tags')),
+				status: $(this.cards[i]).attr('data-status'),
 				element: $(this.cards[i])
 			};
 			this.cardsData.push(cardData);
@@ -30,12 +32,22 @@ class Search{
 
 	search(searchString, by){
 		this.hideAll();
+		let filteringItems = [];
 		if(typeof by == 'undefined' || by == 'title'){
-			console.log('by title', this.filterShowByTitle(this.cardsData, searchString));
+			filteringItems = this.filterShowByTitle(this.cardsData, searchString);
 		}
 		if(typeof by == 'undefined' || by == 'tags'){
-			console.log('by tags', this.filterShowByTags(this.cardsData, searchString));
+			filteringItems = filteringItems.concat(this.filterShowByTags(this.cardsData, searchString));
 		}
+		
+		filteringItems = this.filterShowByStatus(filteringItems, this.getSearchedStatus());
+		for(let i of filteringItems){
+			this.showCard(i);
+		}
+	}
+
+	getSearchedStatus(){
+		return $(this.statusControlContainer).attr('data-status');
 	}
 
 	hideAll(){
@@ -59,7 +71,6 @@ class Search{
 		for(let i of items){
 			if(i.title.indexOf(title) > -1){
 				filteringItems.push(i);
-				this.showCard(i);
 			}
 		}
 
@@ -98,10 +109,19 @@ class Search{
 		for(let i of items){
 			if(i.counter == max){
 				filteringItems.push(i);
-				this.showCard(i);
 			}
 		}
 
+		return filteringItems;
+	}
+
+	filterShowByStatus(items, status){
+		let filteringItems = [];
+		for(let i of items){
+			if(status == 'any' || status == 'undefined' || i.status.trim().toLowerCase() == status){
+				filteringItems.push(i);
+			}
+		}
 		return filteringItems;
 	}
 }

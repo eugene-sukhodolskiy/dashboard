@@ -38,7 +38,7 @@ $(document).ready(function(){
 });
 
 function searchInit(){
-	searchObject = new Search('input.search', '.project');
+	searchObject = new Search('input.search', '.project', '.status-control');
 	$('.project-card-info .tag').on('click', function(e){
 		e.preventDefault();
 		let projectCard = $(this).parent().parent();
@@ -64,6 +64,15 @@ function searchInit(){
 
 	$('.search-cancel').on('click', function(){
 		$('input.search').val('').trigger('input');
+	});
+
+	$('.status-control a').on('click', function(e){
+		e.preventDefault();
+		let status = $(this).attr('data-status');
+		$(this).parent().find('a').show();
+		$(this).hide();
+		$(this).parent().attr('data-status', status);
+		searchObject.search($('input.search').val());
 	});
 }
 
