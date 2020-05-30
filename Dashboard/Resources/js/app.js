@@ -34,6 +34,10 @@ $(document).ready(function(){
 		}
 	});
 
+	searchInit();
+});
+
+function searchInit(){
 	searchObject = new Search('input.search', '.project');
 	$('.project-card-info .tag').on('click', function(e){
 		e.preventDefault();
@@ -46,8 +50,21 @@ $(document).ready(function(){
 		}
 		let searchString = $(this).html().trim().toLowerCase();
 		$('input.search').val(searchString);
+		$('.search-cancel').addClass('visible');
 		searchObject.search(searchString, 'tags');
 	});
-});
+
+	$('input.search').on('input', function(){
+		if($('input.search').val().length){
+			$('.search-cancel').addClass('visible');
+		}else{
+			$('.search-cancel').removeClass('visible');
+		}
+	});
+
+	$('.search-cancel').on('click', function(){
+		$('input.search').val('').trigger('input');
+	});
+}
 
 let searchObject;
