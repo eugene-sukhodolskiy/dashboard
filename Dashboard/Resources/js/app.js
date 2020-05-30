@@ -35,6 +35,19 @@ $(document).ready(function(){
 	});
 
 	searchObject = new Search('input.search', '.project');
+	$('.project-card-info .tag').on('click', function(e){
+		e.preventDefault();
+		let projectCard = $(this).parent().parent();
+		if($(projectCard).hasClass('project')){
+			$(projectCard).find('.open-project').addClass('no-info');
+		}else{
+			projectCard.parent().find('.open-project').addClass('no-info');
+			$('.global-popup-bg').trigger('click');
+		}
+		let searchString = $(this).html().trim().toLowerCase();
+		$('input.search').val(searchString);
+		searchObject.search(searchString, 'tags');
+	});
 });
 
 let searchObject;
