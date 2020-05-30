@@ -29,7 +29,8 @@ $(document).ready(function(){
 		if(fav.length){
 			let project = $(this);
 			new Color(fav, function(c){
-				project.css('background-color', 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)');
+				let rgba = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)';
+				project.css('background-color', rgba);
 			});
 		}
 	});

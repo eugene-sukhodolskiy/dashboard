@@ -17,7 +17,7 @@ class Color{
 		imgObj.onload = function(){
 			canvas.width = imgObj.width;
 			canvas.height = imgObj.height;
-			context.drawImage(imgObj, x, y);
+			context.drawImage(imgObj, 10, 10);
 			let imgData = context.getImageData(x, y, canvas.width, canvas.height);
 			let pixels = [];
 			for(let i=0; i<imgData.data.length; i += 4){
