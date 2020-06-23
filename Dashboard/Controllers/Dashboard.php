@@ -3,9 +3,12 @@
 namespace Dashboard\Controllers;
 
 use Dashboard\Models\Projects;
+use Dashboard\Models\Github;
 
 class Dashboard extends \Dashboard\Middleware\Controller{
 	public function board($filter_status = false){
+		// $git = new GitHub();
+		// dd($git -> auth());
 		$projects = new Projects();
 		$filters = [
 			'status' => $filter_status
