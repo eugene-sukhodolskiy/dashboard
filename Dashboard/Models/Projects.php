@@ -1,39 +1,14 @@
 <?php
 
 namespace Dashboard\Models;
+use \Dashboard\Utils;
 
 class Projects extends \Dashboard\Middleware\Model{
-	public function deep_search_file($dir, $file_to_search, $exactly = false){
-		$files = scandir($dir);
-
-		foreach($files as $i => $file){
-			$path = realpath($dir . DIRECTORY_SEPARATOR . $file);
-			if(is_file($path)) {
-				if(!$exactly){
-					if(strpos($file, $file_to_search) !== false){
-						return ["file" => $file, "path" => $path];
-					}
-				}else{
-					if($file == $file_to_search){
-						return ["file" => $file, "path" => $path];
-					}
-				}
-			}else if($file != "." and $file != "..") {
-				$ret = $this -> deep_search_file($path, $file_to_search, $exactly);
-				if($ret){
-					return $ret;
-				}
-			}  
-		} 
-
-		return false;
-	}
-
 	public function data_addition($name, $project, $path){
 		$project = is_array($project) ? $project : [];
 
 		if(!isset($project['favicon'])){
-			$favicon = $this -> deep_search_file($path, 'favicon.');
+			$favicon = $this -> utils() -> deep_search_file($path, 'favicon.');
 
 			if(isset($favicon) and $favicon){
 				$path_to_fav = explode($name, $favicon['path']);

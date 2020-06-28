@@ -26,12 +26,16 @@ $(document).ready(function(){
 
 	$('.project').each(function(){
 		let fav = $(this).find('.favicon', 0);
-		if(fav.length){
-			let project = $(this);
-			new Color(fav, function(c){
-				let rgba = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)';
-				project.css('background-color', rgba);
-			});
+		let project = $(this);
+		if(project.attr('data-color') != 'undefined'){
+			project.css('background-color', project.attr('data-color'));
+		}else{
+			if(fav.length){
+				new Color(fav, function(c){
+					let rgba = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)';
+					project.css('background-color', rgba);
+				});
+			}
 		}
 	});
 
