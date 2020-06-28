@@ -73,6 +73,10 @@ class Projects extends \Dashboard\Middleware\Model{
 			return null;
 		}
 
-		return json_decode(file_get_contents($project_file), true);
+		$project_json = json_decode(file_get_contents($project_file), true);
+		if(isset($project_json['path_to_project'])){
+			return $this -> analize_project_file($path_to_dir . '/' . $project_json['path_to_project']);
+		}
+		return $project_json;
 	}
 }
