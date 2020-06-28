@@ -4,6 +4,7 @@ namespace Dashboard\Controllers;
 
 use Dashboard\Models\Projects;
 use Dashboard\Models\Github;
+use Dashboard\Models\Settings;
 
 class Dashboard extends \Dashboard\Middleware\Controller{
 	public function board($filter_status = false){
@@ -36,5 +37,10 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 
 		header('Content-type: ' . $ctype);
 		echo $img;
+	}
+
+	public function save_setting($setting_name, $value){
+		$settings = new Settings();
+		return $settings -> save_setting($setting_name, $value);
 	}
 }

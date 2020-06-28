@@ -8,6 +8,7 @@
 :root{
 	/*--bg-color: #0D47A1;*/
 	--bg-color: #355C7D;
+	--bg-texture: url('../imgs/bg-texture/bright-squares.png');
 	/*--main-color: #1565C0;*/
 	--main-color: #6C5B7B;
 	--text-color: #fff;
@@ -24,6 +25,8 @@
 }
 
 body{
+	background-image: var(--bg-texture);
+	background-repeat: repeat;
 	background-color: var(--bg-color);
 	color: white;
 	font-family: Roboto;
@@ -87,6 +90,7 @@ body .button{
 	padding: 6px 15px;
 	font-size: 18px;
 	background-color: #263238;
+	border: 0;
 	color: white;
 	cursor: pointer;
 	border-radius: 3px;
