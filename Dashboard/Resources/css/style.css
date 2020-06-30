@@ -6,14 +6,11 @@
 }
 
 :root{
-	/*--bg-color: #0D47A1;*/
-	--bg-color: #355C7D;
+	--bg-color: #0D47A1;
 	--bg-texture: url('../imgs/bg-texture/bright-squares.png');
-	/*--main-color: #1565C0;*/
-	--main-color: #6C5B7B;
+	--main-color: #1565C0;
 	--text-color: #fff;
-	/*--main-hover: #1E88E5;*/
-	--main-hover: #C06C84;
+	--main-hover: #1E88E5;
 
 	--project-description-bg-color: #fff;
 	--project-description-color: #333;
@@ -284,4 +281,45 @@ input.search{
 .search-cancel:hover{
 	cursor: pointer;
 	opacity: .8;
+}
+
+.settings{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	transition-duration: .2s;
+	z-index: 1000;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.settings.open{
+	opacity: 1;
+	visibility: visible;
+}
+
+.settings *{
+	color: #222;
+}
+
+.settings .settings-close{
+	float: right;
+}
+
+.setting-item{
+	margin-top: 30px;
+}
+
+.input{
+	padding: 8px 12px;
+	display: block;
+	max-width: 400px;
+	width: 100%;
+	background-color: var(--main-color);
+	color: var(--text-color);
+	border: 0;
+	border-radius: 4px;
 }

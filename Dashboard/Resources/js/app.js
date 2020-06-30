@@ -79,6 +79,9 @@ function searchInit(){
 		$(this).parent().attr('data-status', status);
 		searchObject.search($('input.search').val());
 	});
+
+	settings = new Settings();
 }
 
+let settings;
 let searchObject;

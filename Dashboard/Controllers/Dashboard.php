@@ -11,12 +11,15 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 		// $git = new GitHub();
 		// dd($git -> auth());
 		$projects = new Projects();
+		$settings = new Settings();
 		$filters = [
 			'status' => $filter_status
 		];
 		return $this -> new_template() -> make('project.list', [
 			'projects' => $projects -> get_projects_list($filters),
-			'filters' => $filters
+			'filters' => $filters,
+			'settings' => $settings -> get_settings(),
+			'settings_variants' => $settings -> get_settings_variants()
 		]);
 	}
 

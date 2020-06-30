@@ -7,7 +7,7 @@
 			<input type="text" class="inp search" placeholder="Search">
 			<button class="search-cancel"></button>
 			<h3 class="total">Total: <?= count($projects) ?></h3>
-			<button class="button">Settings</button>
+			<button class="button settings-open">Settings</button>
 		</div>
 	</div>
 	<div class="row">

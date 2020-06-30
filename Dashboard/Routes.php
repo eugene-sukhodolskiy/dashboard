@@ -47,6 +47,6 @@ class Routes{
 	}
 
 	protected function post_routes(){
-		$this -> router -> post(['setting_name', 'value'], "{$this -> cn}\\Dashboard@save_setting");
+		$this -> router -> post(['setting_name', 'value'], "{$this -> cn}\\Dashboard@save_setting", "/save-setting");
 	}
 }
