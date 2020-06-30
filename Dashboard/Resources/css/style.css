@@ -47,6 +47,7 @@ body{
 	transition-property: background-color, box-shadow;
 	position: relative;
 	overflow: hidden;
+	color: var(--text-color);
 }
 
 .project:hover{
@@ -63,6 +64,7 @@ body{
 .project p{
 	margin-bottom: 0;
 	margin-top: 10px;
+	color: var(--text-color);
 }
 
 .project .description a{
@@ -234,7 +236,7 @@ header .total{
 }
 
 .project .tag{
-	color: #fff;
+	color: var(--text-color);
 	text-decoration: underline;
 	margin-left: 7px;
 }
