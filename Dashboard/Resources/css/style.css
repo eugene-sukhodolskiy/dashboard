@@ -48,6 +48,7 @@ body{
 	position: relative;
 	overflow: hidden;
 	color: var(--text-color);
+  border-bottom: 5px solid transparent;
 }
 
 .project:hover{
@@ -115,6 +116,8 @@ body .button:hover{
 	box-sizing: border-box;
 	padding: 50px;
 	font-size: 18px;
+	border-right: 8px solid transparent;
+	border-color: inherit;
 	transition-property: opacity, left;
 	transition-duration: .3s;
 }
@@ -324,3 +327,4 @@ input.search{
 	border: 0;
 	border-radius: 4px;
 }
+

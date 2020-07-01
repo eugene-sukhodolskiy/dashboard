@@ -1,4 +1,5 @@
 {
     "color-schema": "dark-blood",
-    "bg-texture": "notebook-dark"
+    "bg-texture": "notebook-dark",
+    "project-color-in": "border-color"
 }
