@@ -1,0 +1,14 @@
+:root{
+	--bg-color: #11151C;
+	--main-color: #212D40;
+	--text-color: #D66853;
+	--main-hover: #364156;
+	--project-description-bg-color: #11151C;
+	--project-description-color: #D66853;
+	--popup-bg-background-color: #7d4e57c9;
+}
+
+.project .description .tag,
+.project .description a{
+	color: var(--text-color);
+}
