@@ -26,6 +26,7 @@ function collect_data(){
 	$data['project_color'] = null;
 	$data['git_url'] = null;
 	$data['release_url'] = null;
+	$data['project_color'] = null;
 
 	return $data;
 }
