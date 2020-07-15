@@ -1,0 +1,31 @@
+:root{
+	--bg-color: #038C8C;
+	--main-color: #fff;
+	--text-color: #222;
+	--main-hover: #03A696;
+	--project-description-bg-color: #fff;
+	--project-description-color: #222;
+	--popup-bg-background-color: #02687366;
+}
+
+body .button,
+.button.small-button{
+	background-color: #035AA6;
+}
+
+body .button:hover,
+.button.small-button:hover{
+	background-color: #4192D9;
+}
+
+.project .description a{
+	color: var(--text-color);
+}
+
+.project .description .project-control .button{
+	color: #fff;
+}
+
+.input{
+	border: 1px solid #222;
+}
