@@ -4,6 +4,7 @@ return [
 	"app_name" => "Dashboard",
 	"debug" => true,
 	"default_db_wrap" => false,
+	// Not needs of sql database
 	"db" => [
 		"dblib" => "mysql",
 		"host" => "127.0.0.1",
@@ -18,5 +19,10 @@ return [
 	"logs_folder" => "Dashboard/Logs",
 
 	"controllers_folder" => "Controllers",
-	"projects_folder" => "/var/www/html",
+
+	// Array with folders of projects
+	"projects_folders" => [
+		"/var/www/html",
+		"/home/eugene/projects"
+	],
 ]; 

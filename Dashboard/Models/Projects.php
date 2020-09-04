@@ -33,25 +33,34 @@ class Projects extends \Dashboard\Middleware\Model{
 	}
 
 	public function get_projects_list($filters){
-		$dirs = scandir(FCONF['projects_folder']);
+		$folders = FCONF['projects_folders'];
+		$self = $this;
 		$projects = [];
-		foreach ($dirs as $i => $item) {
-			if(!is_file($item) and $item != '.' and $item != '..'){
-				$path = FCONF['projects_folder'] . '/' . $item;
-				$project = $this -> analize_project_file($path);
-				$project = $this -> data_addition($item, $project, $path);
+		foreach($folders as $folder){
+			$projects = array_merge($projects, (function($projects_folder) use($self){
+				$dirs = scandir($projects_folder);
+				$projects = [];
+				foreach ($dirs as $i => $item) {
+					if(!is_file($item) and $item != '.' and $item != '..'){
+						$path = $projects_folder . '/' . $item;
+						$project = $self -> analize_project_file($path);
+						$project = $self -> data_addition($item, $project, $path);
 
-				$last_update = filemtime($path);
+						$last_update = filemtime($path);
 
-				$projects[] = [
-					"name" => $item,
-					"path" => $path,
-					"project" => $project,
-					"last_update" => $last_update
-				];
-			}
+						$projects[] = [
+							"name" => $item,
+							"path" => $path,
+							"project" => $project,
+							"last_update" => $last_update
+						];
+					}
+				}
+
+				return $projects;
+			})($folder));
 		}
-
+		
 		usort($projects, function($a, $b){
 			return $b['last_update'] - $a['last_update'];
 		});
