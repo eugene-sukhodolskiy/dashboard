@@ -6,5 +6,6 @@
 	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard",
 	"tags": ["fury", "personal", "html", "css", "php", "js"],
 	"status": "open",
-	"type": "web"
+	"type": "web",
+	"main_lang": "php"
 }

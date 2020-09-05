@@ -9,6 +9,9 @@
 		<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
 			<img src="<?= $project['project']['favicon'] ?>" class="favicon">
 		<? endif ?>
+		<? if(isset($project['project']['main_lang'])): ?>
+			<img src="/Dashboard/Resources/imgs/langs/file_type_<?= $project['project']['main_lang'] ?>@3x.png" class="favicon" title="<?= $project['project']['main_lang'] ?>">
+		<? endif ?>
 		<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 	</h3>
 	<div class="project-card-info">
@@ -28,6 +31,9 @@
 		<h3 class="project-title">
 			<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
 				<img src="<?= $project['project']['favicon'] ?>" class="favicon">
+			<? endif ?>
+			<? if(isset($project['project']['main_lang'])): ?>
+				<img src="/Dashboard/Resources/imgs/langs/file_type_<?= $project['project']['main_lang'] ?>@3x.png" class="favicon" title="<?= $project['project']['main_lang'] ?>">
 			<? endif ?>
 			<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 		</h3>

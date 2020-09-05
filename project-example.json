@@ -7,5 +7,7 @@
 	"tags": ["fury", "personal", "html", "css", "php", "js"],
 	"status": "open",
 	"type": "web",
-	"project_color": "#f60"
+	"project_color": "#f60",
+	"favicon": null,
+	"main_lang": "php"
 }
