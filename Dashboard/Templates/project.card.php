@@ -31,25 +31,30 @@
 			<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>
 		</h3>
 		<datetime class="last-update">
-			Updated: <?= date("d.m.Y H:i", $project['last_update']); ?>
+			<strong>Updated:</strong> <?= date("d.m.Y H:i", $project['last_update']); ?>
 		</datetime>
+
+		<p class="path-info">
+			<strong>Path to folder:</strong>
+			<?= $project['path'] ?>
+		</p>
 
 		<?php if($project['project']): ?>
 			<? if(isset($project['project']['ver'])): ?>
 				<p class="ver">
-					Version: <?= $project['project']['ver'] ?>
+					<strong>Version:</strong> <?= $project['project']['ver'] ?>
 				</p>
 			<? endif ?>
 
 			<? if(isset($project['project']['author'])): ?>
 				<p class="author">
-					Author: <?= $project['project']['author'] ?>
+					<strong>Author:</strong> <?= $project['project']['author'] ?>
 				</p>
 			<? endif ?>
 
-			<? if(isset($project['project']['release_url'])): ?>
+			<? if(isset($project['project']['release_url']) and strlen($project['project']['release_url'])): ?>
 				<p class="release">
-					Release: 
+					<strong>Release: </strong>
 					<span class="incomplete release-link">
 						<a href="<?= $project['project']['release_url'] ?>" target="_blank">
 							<?= $project['project']['release_url'] ?>
@@ -60,7 +65,7 @@
 			
 			<? if(isset($project['project']['git_url'])): ?>
 				<p class="git">
-					Git: 
+					<strong>Git: </strong>
 					<span class="incomplete git-link">
 						<a href="<?= $project['project']['git_url'] ?>" target="_blank">
 							<?= $project['project']['git_url'] ?>
@@ -80,12 +85,17 @@
 			<? endif ?>
 		</div>
 		<div class="project-control">
-			<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+			<? if(isset($project['project']['type']) and $project['project']['type'] == 'web'): ?>
+				<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+			<? endif ?>
 		</div>
 	</div>
 	<!-- END DESCRIPTION -->
 
-	<div class="project-control">
-		<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+	<div class="project-control root">
+		<? if(isset($project['project']['type']) and $project['project']['type'] == 'web'): ?>
+			<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
+		<? endif ?>
+		<span class="short-path-to-project-folder" title="<?= $project['path'] ?>">...<?= substr($project['path'], -20, 20) ?></span>
 	</div>
 </div>
