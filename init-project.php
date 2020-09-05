@@ -7,7 +7,8 @@ function collect_data(){
 		'Version:' => 'ver',
 		'Author name:' => 'author',
 		'Tags:' => 'tags',
-		'Project type:' => 'type'
+		'Project type:' => 'type',
+		'Main language:' => 'main_lang'
 	];
 
 	foreach ($questions as $q => $prop_name) {
@@ -19,7 +20,7 @@ function collect_data(){
 	}, explode(',', $data['tags']));
 
 	if($data['ver'] == "\n" or $data['ver'] == ''){
-		$data['ver'] = '0.1';
+		$data['ver'] = '1.0';
 	}
 
 	$data['status'] = "open";
@@ -27,6 +28,8 @@ function collect_data(){
 	$data['git_url'] = null;
 	$data['release_url'] = null;
 	$data['project_color'] = null;
+	$data['favicon'] = null;
+	$data['description'] = null;
 
 	return $data;
 }

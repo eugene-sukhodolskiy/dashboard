@@ -98,6 +98,12 @@
 				<? endforeach ?>
 			<? endif ?>
 		</div>
+		<? if(isset($project['project']) and isset($project['project']['description']) and strlen($project['project']['description'])): ?>
+			<p class="project-description-info">
+				<strong>Project description:</strong>
+				<?= $project['project']['description'] ?>
+			</p>
+		<? endif ?>
 		<div class="project-control">
 			<? if(isset($project['project']['type']) and $project['project']['type'] == 'web'): ?>
 				<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
