@@ -16,7 +16,8 @@ class Search{
 				title: $(this.cards[i]).attr('data-title').toLowerCase(),
 				tags: JSON.parse($(this.cards[i]).attr('data-tags')),
 				status: $(this.cards[i]).attr('data-status'),
-				element: $(this.cards[i])
+				element: $(this.cards[i]),
+				type: $(this.cards[i]).attr('data-type').toLowerCase().trim(),
 			};
 			this.cardsData.push(cardData);
 		}
@@ -38,6 +39,9 @@ class Search{
 		}
 		if(typeof by == 'undefined' || by == 'tags'){
 			filteringItems = filteringItems.concat(this.filterShowByTags(this.cardsData, searchString));
+		}
+		if(typeof by == 'undefined' || by == 'type'){
+			filteringItems = filteringItems.concat(this.filterShowByType(this.cardsData, searchString));
 		}
 		
 		filteringItems = this.filterShowByStatus(filteringItems, this.getSearchedStatus());
@@ -122,6 +126,17 @@ class Search{
 				filteringItems.push(i);
 			}
 		}
+		return filteringItems;
+	}
+
+	filterShowByType(items, typename){
+		let filteringItems = [];
+		for(let i of items){
+			if(typename == i.type){
+				filteringItems.push(i);
+			}
+		}
+
 		return filteringItems;
 	}
 }

@@ -3,6 +3,7 @@
 	data-tags='<?= (isset($project["project"]["tags"]) and is_array($project["project"]["tags"])) ? json_encode($project["project"]["tags"]) : json_encode([])  ?>'
 	data-status="<?= isset($project['project']['status']) ? strtolower($project['project']['status']) : 'undefined' ?>"
 	data-color="<?= isset($project['project']['project_color']) ? $project['project']['project_color'] : 'undefined' ?>"
+	data-type="<?= isset($project['project']['type']) ? $project['project']['type'] : 'undefined' ?>"
 >
 	<h3 class="project-title">
 		<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
@@ -33,6 +34,13 @@
 		<datetime class="last-update">
 			<strong>Updated:</strong> <?= date("d.m.Y H:i", $project['last_update']); ?>
 		</datetime>
+
+		<? if(isset($project['project']) and isset($project['project']['type'])): ?>
+			<p class="path-info">
+				<strong>Project type:</strong>
+				<?= $project['project']['type'] ?>
+			</p>
+		<? endif ?>
 
 		<p class="path-info">
 			<strong>Path to folder:</strong>
