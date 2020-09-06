@@ -81,8 +81,36 @@ function searchInit(){
 		searchObject.search($('input.search').val());
 	});
 
+	$('.open-hidden-list').on('click', function(){
+		$('.hidden-list').addClass('show');
+		$('.hidden-list-bg').addClass('show');
+		$.getJSON("/Dashboard/hidden-list.json", function(hiddenProjects){
+			$('.hidden-list .loader-spin').hide();
+			let html = '';
+			for(let project of hiddenProjects){
+				html += `<li class="hidden-project">
+					<span class="project-name">${project}</span>
+					<button class="button make-project-visible" data-project-name="${project}" data-change-visibility="true">Make visible</button>
+				</li>`;
+			}
+
+			if(!hiddenProjects.length){
+				html += `<div class="empty-hidden-list">Empty</div>`
+			}
+			$('.hidden-list-wrap').html(html);
+			projectControl.initChangeVisibility();
+		});
+	});
+
+	$('.hidden-list-bg').on('click', function(){
+		$('.hidden-list').removeClass('show');
+		$('.hidden-list-bg').removeClass('show');
+	});
+
 	settings = new Settings();
+	projectControl = new ProjectControl();
 }
 
 let settings;
 let searchObject;
+let projectControl;

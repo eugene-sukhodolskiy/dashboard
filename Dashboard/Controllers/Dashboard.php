@@ -46,4 +46,14 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 		$settings = new Settings();
 		return $settings -> save_setting($setting_name, $value);
 	}
+
+	public function visibility_project($project_name, $visibility_flag){
+		$projects = new Projects();
+		$visibility_flag = $visibility_flag == 'false' ? false : true;
+		if($visibility_flag){
+			return $projects -> remove_from_hidden_list($project_name);
+		}else{
+			return $projects -> add_to_hidden_list($project_name);
+		}
+	}
 }

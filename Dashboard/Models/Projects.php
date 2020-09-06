@@ -4,6 +4,8 @@ namespace Dashboard\Models;
 use \Dashboard\Utils;
 
 class Projects extends \Dashboard\Middleware\Model{
+	protected $path_to_hidden_list_file = PROJECT_FOLDER . '/hidden-list.json';
+
 	public function data_addition($name, $project, $path){
 		$project = is_array($project) ? $project : [];
 
@@ -60,6 +62,11 @@ class Projects extends \Dashboard\Middleware\Model{
 				return $projects;
 			})($folder));
 		}
+
+		$hidden_list = $this -> get_hidden_projects();
+		$projects = array_filter($projects, function($project) use($hidden_list){
+			return !in_array(strtolower($project['name']), $hidden_list);
+		});
 		
 		usort($projects, function($a, $b){
 			return $b['last_update'] - $a['last_update'];
@@ -87,5 +94,32 @@ class Projects extends \Dashboard\Middleware\Model{
 			return $this -> analize_project_file($path_to_dir . '/' . $project_json['path_to_project']);
 		}
 		return $project_json;
+	}
+
+	public function get_hidden_projects(){
+		return json_decode(file_get_contents($this -> path_to_hidden_list_file));
+	}
+
+	public function add_to_hidden_list($project_name){
+		$project_name = strtolower($project_name);
+		$hidden_list = $this -> get_hidden_projects();
+		if(!in_array($project_name, $hidden_list)){
+			$hidden_list[] = $project_name;
+			return file_put_contents($this -> path_to_hidden_list_file, json_encode($hidden_list, JSON_PRETTY_PRINT));
+		}
+
+		return false;
+	}
+
+	public function remove_from_hidden_list($project_name){
+		$project_name = strtolower($project_name);
+		$hidden_list = $this -> get_hidden_projects();
+		$pr_inx = array_search($project_name, $hidden_list);
+		if($pr_inx !== false){
+			array_splice($hidden_list, $pr_inx, 1);
+			return file_put_contents($this -> path_to_hidden_list_file, json_encode($hidden_list, JSON_PRETTY_PRINT));
+		}
+
+		return false;
 	}
 }

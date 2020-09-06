@@ -1,4 +1,5 @@
 <div class="project" 
+	data-name="<?= $project['name'] ?>"
 	data-title="<?= isset($project['project']['name']) ? $project['project']['name'] : $project['name'] ?>"
 	data-tags='<?= (isset($project["project"]["tags"]) and is_array($project["project"]["tags"])) ? json_encode($project["project"]["tags"]) : json_encode([])  ?>'
 	data-status="<?= isset($project['project']['status']) ? strtolower($project['project']['status']) : 'undefined' ?>"
@@ -108,6 +109,7 @@
 			<? if(isset($project['project']['type']) and $project['project']['type'] == 'web'): ?>
 				<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>
 			<? endif ?>
+			<button class="button" data-project-name="<?= $project['name'] ?>" data-change-visibility="false">Hidden</button>
 		</div>
 	</div>
 	<!-- END DESCRIPTION -->

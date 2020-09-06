@@ -348,6 +348,79 @@ input.search{
 	display: block;
 }
 
+.hidden-list-container{
+	position: relative;
+	width: 100%;
+}
+
+.hidden-list{
+	background-color: var(--project-description-bg-color);
+	position: absolute;
+	top: 90px;
+	width: 100%;
+	z-index: 11;
+	box-shadow: 0 0 5px #333;
+	border-radius: 5px;
+	color: var(--project-description-color);
+	visibility: hidden;
+	opacity: 0;
+	transition-property: visibility, opacity, top;
+	transition-duration: .25s;
+}
+
+.hidden-list.show{
+	visibility: visible;
+	opacity: 1;
+	top: 60px;
+}
+
+.hidden-list h3{
+	padding: 10px 20px;
+}
+
+.hidden-list .hidden-project{
+	list-style: none;
+	padding: 10px 20px;
+}
+
+.hidden-list .make-project-visible{
+	float: right;
+	padding: 0 10px;
+}
+
+.hidden-list .hidden-project .project-name{
+	font-size: 20px;
+}
+
+.hidden-list .loader-spin,
+.hidden-list .empty-hidden-list{
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	font-size: 18px;
+	opacity: .7;
+}
+
+.hidden-list-bg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--popup-bg-background-color);
+	cursor: pointer;
+	visibility: hidden;
+	opacity: 0;
+	transition-property: visibility, opacity;
+	transition-duration: .25s;
+}
+
+.hidden-list-bg.show{
+	visibility: visible;
+	opacity: 1;
+}
+
 @media (min-width: 1900px){
 	.col-xxl{
 		flex: 0 0 16.666667%;

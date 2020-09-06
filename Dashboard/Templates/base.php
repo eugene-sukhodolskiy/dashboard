@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="/Dashboard/Resources/js/color.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/search.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/settings.js"></script>
+	<script type="text/javascript" src="/Dashboard/Resources/js/project-control.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/app.js"></script>
 </head>
 <body>
