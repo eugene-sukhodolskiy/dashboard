@@ -28,5 +28,27 @@ class Utils{
 
 		return false;
 	}
+
+	public function scandirs($dir, &$results = array()) {
+		$files = scandir($dir);
+
+		foreach ($files as $key => $value) {
+			$path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+			if (!is_dir($path)) {
+				$results[] = $path;
+			} else if ($value != "." && $value != "..") {
+				$this -> scandirs($path, $results);
+				$results[] = $path;
+			}
+		}
+
+		return $results;
+	}
+
+	public function filesize_formatted($size){
+		$units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+		$power = $size > 0 ? floor(log($size, 1024)) : 0;
+		return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+	}
 }
 

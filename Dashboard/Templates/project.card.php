@@ -89,6 +89,7 @@
 				</p>
 			<? endif ?>
 		<?php endif ?>
+
 		<div class="project-card-info">
 			<? if(isset($project['project']['status'])): ?>
 				<span class="status s-<?= strtolower($project['project']['status']) ?>"><?= $project['project']['status'] ?></span>
@@ -99,12 +100,21 @@
 				<? endforeach ?>
 			<? endif ?>
 		</div>
+
 		<? if(isset($project['project']) and isset($project['project']['description']) and strlen($project['project']['description'])): ?>
 			<p class="project-description-info">
 				<strong>Project description:</strong>
 				<?= $project['project']['description'] ?>
 			</p>
 		<? endif ?>
+
+		<p class="project-counters">
+			Total files <strong><?= $project['project']['scan']['list']['filtered']['total']['files'] ?></strong> 
+			in <strong><?= $project['project']['scan']['list']['filtered']['total']['folders']+1 ?></strong> folders.
+			<br>
+			Total size <?= $project['project']['scan']['fsize'] ?>
+		</p>
+
 		<div class="project-control">
 			<? if(isset($project['project']['type']) and $project['project']['type'] == 'web'): ?>
 				<a class="button open-project" href="http://<?= $project['name'] ?>" target="_blank">Open</a>

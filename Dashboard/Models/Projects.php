@@ -5,6 +5,11 @@ use \Dashboard\Utils;
 
 class Projects extends \Dashboard\Middleware\Model{
 	protected $path_to_hidden_list_file = PROJECT_FOLDER . '/hidden-list.json';
+	protected $utils;
+
+	public function __construct(){
+		$this -> utils = new Utils();
+	}
 
 	public function data_addition($name, $project, $path){
 		$project = is_array($project) ? $project : [];
@@ -30,6 +35,36 @@ class Projects extends \Dashboard\Middleware\Model{
 				$project['git_url'] = $git_url;
 			}
 		}
+
+
+		$project['scan'] = [
+			'list' => ['all' => $this -> utils -> scandirs($path)],
+			'fsize' => 0
+		];
+		$filtered = array_filter($project['scan']['list']['all'], function($item){
+			return strpos($item, DIRECTORY_SEPARATOR . '.') === false;
+		});
+
+		$project['scan']['list']['filtered'] = [
+			'folders' => [],
+			'files' => [],
+			'total' => []
+		];
+
+		foreach($filtered as $i => $item){
+			if(is_file($item)){
+				$project['scan']['list']['filtered']['files'][] = $item;
+				$project['scan']['fsize'] += filesize($item);
+			}else{
+				$project['scan']['list']['filtered']['folders'][] = $item;
+			}
+		}
+		$project['scan']['list']['filtered']['total'] = [
+			'folders' => count($project['scan']['list']['filtered']['folders']),
+			'files' => count($project['scan']['list']['filtered']['files'])
+		];
+
+		$project['scan']['fsize'] = $this -> utils -> filesize_formatted($project['scan']['fsize']);
 
 		return $project;
 	}
