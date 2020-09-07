@@ -118,7 +118,7 @@ class Projects extends \Dashboard\Middleware\Model{
 		return $projects;
 	}
 
-	protected function analize_project_file($path_to_dir){
+	protected function analize_project_file(&$path_to_dir){
 		$project_file = $path_to_dir . '/project.json';
 		if(!file_exists($project_file)){
 			return null;
@@ -126,7 +126,8 @@ class Projects extends \Dashboard\Middleware\Model{
 
 		$project_json = json_decode(file_get_contents($project_file), true);
 		if(isset($project_json['path_to_project'])){
-			return $this -> analize_project_file($path_to_dir . '/' . $project_json['path_to_project']);
+			$path_to_dir = $path_to_dir . '/' . $project_json['path_to_project'];
+			return $this -> analize_project_file($path_to_dir);
 		}
 		return $project_json;
 	}
