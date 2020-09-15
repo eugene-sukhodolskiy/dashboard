@@ -1,13 +1,6 @@
 class Settings{
 	constructor(){
 		const self = this;
-		$('.settings-open').on('click', function(){
-			$('.page.settings').addClass('open');
-		});
-
-		$('.settings-close').on('click', function(){
-			$('.page.settings').removeClass('open');
-		});
 
 		$('.setting-item select').on('change', function(){
 			let data = {
@@ -15,6 +8,16 @@ class Settings{
 				value: $(this).val()
 			};
 			self.save(data);
+		});
+
+		$('.settings-list-open').on('click', function(){
+			$('.settings-popup-container .popup-mini-content').addClass('show');
+			$('.hidden-settings-bg').addClass('show');
+		});
+
+		$('.hidden-settings-bg').on('click', function(){
+			$(this).removeClass('show');
+			$('.settings-popup-container .popup-mini-content').removeClass('show');
 		});
 	}
 

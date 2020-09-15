@@ -348,16 +348,17 @@ input.search{
 	display: block;
 }
 
-.hidden-list-container{
+.popup-mini-container{
 	position: relative;
 	width: 100%;
 }
 
-.hidden-list{
+.popup-mini-content{
 	background-color: var(--project-description-bg-color);
 	position: absolute;
 	top: 90px;
 	width: 100%;
+	min-width: 400px;
 	z-index: 11;
 	box-shadow: 0 0 5px #333;
 	border-radius: 5px;
@@ -368,13 +369,13 @@ input.search{
 	transition-duration: .25s;
 }
 
-.hidden-list.show{
+.popup-mini-content.show{
 	visibility: visible;
 	opacity: 1;
 	top: 60px;
 }
 
-.hidden-list h3{
+.popup-mini-content h3{
 	padding: 10px 20px;
 }
 
@@ -401,7 +402,7 @@ input.search{
 	opacity: .7;
 }
 
-.hidden-list-bg{
+.popup-mini-bg{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -416,9 +417,36 @@ input.search{
 	transition-duration: .25s;
 }
 
-.hidden-list-bg.show{
+.popup-mini-bg.show{
 	visibility: visible;
 	opacity: 1;
+}
+
+.settings-popup-container{
+	top: 0;
+	left: 140px;
+}
+
+.hidden-list-container{
+	top: 0;
+}
+
+.aside-popups-container{
+	position: relative;
+	margin-top: 15px;
+}
+
+.aside-popups-container > .popup-mini-container{
+	position: absolute;
+	width: max-content;
+}
+
+.setting-item{
+	padding: 0 20px;
+}
+
+.settings-list{
+	padding-bottom: 20px;
 }
 
 @media (min-width: 1900px){

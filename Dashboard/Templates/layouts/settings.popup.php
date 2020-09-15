@@ -2,11 +2,11 @@
 	const SETTINGS = JSON.parse('<?= json_encode($settings) ?>');
 </script>
 
-<div class="settings page">
-	<div class="container">
-		<button class="button settings-close">Close</button>
-		<h1>Settings</h1>
-		<hr>
+<div class="popup-mini-container settings-popup-container">
+	<button class="button settings-list-open">Settings</button>
+	<div class="popup-mini-content settings-list">
+		<h3>Dashboard settings</h3>
+
 		<div class="setting-item">
 			<label for="color-schema">Color Schema</label>
 			<select name="color-schema" id="color-schema" class="input">
@@ -30,5 +30,6 @@
 				<option value="background-color" <? if('background-color' == $settings['project-color-in']) echo "selected" ?>>Background color</option>
 			</select>
 		</div>
+
 	</div>
 </div>

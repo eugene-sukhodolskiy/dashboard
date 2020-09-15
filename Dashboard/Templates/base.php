@@ -23,11 +23,6 @@
 <body>
 	<div class="global-popup-bg"></div>
 
-	<?= $this -> join('settings', [
-		'settings' => $settings,
-		'settings_variants' => $settings_variants
-	]); ?>
-
 	<div class="grid">
 		<?= $this -> join('layouts/header.php', $this -> parent() -> get_inside_data()); ?>
 		<?= $this -> content() ?>
