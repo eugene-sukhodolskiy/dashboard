@@ -1,0 +1,23 @@
+:root{
+	--bg-color: #3D91A8;
+	--main-color: #265A69;
+	--text-color: #fff;
+	--main-hover: #4AB2CF;
+	--project-description-bg-color: #fff;
+	--project-description-color: #111;
+	--popup-bg-background-color: #265A69ad;
+}
+
+.project .description .tag,
+.project .description a{
+	color: var(--main-hover);
+}
+
+.project .description .button{
+	background-color: var(--main-color);
+	color: var(--project-description-color);
+}
+
+select, input, textarea{
+	color: var(--text-color);
+}
