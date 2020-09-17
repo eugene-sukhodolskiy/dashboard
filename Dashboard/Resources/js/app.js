@@ -144,7 +144,7 @@ function hotkeyMap(){
 	});
 
 	hotkey.bind(['ctrl', 'enter'], keys => {
-		$('.project:eq(0)').trigger('click');
+		$('.project:visible', 0).trigger('click');
 	});
 
 	// hotkey.bind(['ctrl', 'shift', 'enter'], keys => {
