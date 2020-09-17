@@ -41,7 +41,39 @@ $(document).ready(function(){
 	});
 
 	searchInit();
+	hotkeyMap();
+	hiddenListControl();
+	settings = new Settings();
+	projectControl = new ProjectControl();
 });
+
+function hiddenListControl(){
+	$('.open-hidden-list').on('click', function(){
+		$('.hidden-list').addClass('show');
+		$('.hidden-list-bg').addClass('show');
+		$.getJSON("/Dashboard/hidden-list.json", function(hiddenProjects){
+			$('.hidden-list .loader-spin').hide();
+			let html = '';
+			for(let project of hiddenProjects){
+				html += `<li class="hidden-project">
+					<span class="project-name">${project}</span>
+					<button class="button make-project-visible" data-project-name="${project}" data-change-visibility="true">Make visible</button>
+				</li>`;
+			}
+
+			if(!hiddenProjects.length){
+				html += `<div class="empty-hidden-list">Empty</div>`
+			}
+			$('.hidden-list-wrap').html(html);
+			projectControl.initChangeVisibility();
+		});
+	});
+
+	$('.hidden-list-bg').on('click', function(){
+		$('.hidden-list').removeClass('show');
+		$('.hidden-list-bg').removeClass('show');
+	});
+}
 
 function searchInit(){
 	searchObject = new Search('input.search', '.project', '.status-control');
@@ -80,37 +112,47 @@ function searchInit(){
 		$(this).parent().attr('data-status', status);
 		searchObject.search($('input.search').val());
 	});
+}
 
-	$('.open-hidden-list').on('click', function(){
-		$('.hidden-list').addClass('show');
-		$('.hidden-list-bg').addClass('show');
-		$.getJSON("/Dashboard/hidden-list.json", function(hiddenProjects){
-			$('.hidden-list .loader-spin').hide();
-			let html = '';
-			for(let project of hiddenProjects){
-				html += `<li class="hidden-project">
-					<span class="project-name">${project}</span>
-					<button class="button make-project-visible" data-project-name="${project}" data-change-visibility="true">Make visible</button>
-				</li>`;
-			}
+let projectContrastFlag = false;
 
-			if(!hiddenProjects.length){
-				html += `<div class="empty-hidden-list">Empty</div>`
-			}
-			$('.hidden-list-wrap').html(html);
-			projectControl.initChangeVisibility();
-		});
+function hotkeyMap(){
+	hotkey = new Hotkey();
+	hotkey.bind(['ctrl', 'shift', 'f'], keys => {
+		$('.search').trigger('focus');
 	});
 
-	$('.hidden-list-bg').on('click', function(){
-		$('.hidden-list').removeClass('show');
-		$('.hidden-list-bg').removeClass('show');
+	hotkey.bind(['ctrl', 'q'], keys => {
+		$('.search-cancel').trigger('click');
+		$('.search').trigger('blur');
 	});
 
-	settings = new Settings();
-	projectControl = new ProjectControl();
+	hotkey.bind(['ctrl', 'shift', 'q'], keys => {
+		$('.search').trigger('blur');
+		$('.global-popup-bg.show').trigger('click');
+		$('.popup-mini-bg.show').trigger('click');
+	});
+
+	hotkey.bind(['ctrl', 'i'], keys => {
+		if(!projectContrastFlag){
+			settings.doSetting_project_color_in('background-color');
+			projectContrastFlag = true;
+		}else{
+			settings.doSetting_project_color_in('border-color');
+			projectContrastFlag = false;
+		}
+	});
+
+	hotkey.bind(['ctrl', 'enter'], keys => {
+		$('.project:eq(0)').trigger('click');
+	});
+
+	// hotkey.bind(['ctrl', 'shift', 'enter'], keys => {
+	// 	console.log($('.project:eq(0)').find('.project-control.root .open-project'));
+	// });
 }
 
 let settings;
 let searchObject;
 let projectControl;
+let hotkey;

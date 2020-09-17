@@ -23,13 +23,6 @@
 				<?php endforeach ?>
 			</select>
 		</div>
-		<div class="setting-item">
-			<label for="project-color-in">View of project color</label>
-			<select name="project-color-in" id="project-color-in" class="input">
-				<option value="border-color" <? if('border-color' == $settings['project-color-in']) echo "selected" ?>>Border color</option>
-				<option value="background-color" <? if('background-color' == $settings['project-color-in']) echo "selected" ?>>Background color</option>
-			</select>
-		</div>
 
 	</div>
 </div>
