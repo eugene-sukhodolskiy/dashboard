@@ -41,9 +41,14 @@ class Projects extends \Dashboard\Middleware\Model{
 			'list' => ['all' => $this -> utils -> scandirs($path)],
 			'fsize' => 0
 		];
-		$filtered = array_filter($project['scan']['list']['all'], function($item){
-			return strpos($item, DIRECTORY_SEPARATOR . '.') === false;
-		});
+
+		if(is_array($project['scan']['list']['all'])){
+			$filtered = array_filter($project['scan']['list']['all'], function($item){
+				return strpos($item, DIRECTORY_SEPARATOR . '.') === false;
+			});
+		}else{
+			$filtered = [];
+		}
 
 		$project['scan']['list']['filtered'] = [
 			'folders' => [],

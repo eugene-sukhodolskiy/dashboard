@@ -4,6 +4,10 @@ namespace Dashboard;
 
 class Utils{
 	public function deep_search_file($dir, $file_to_search, $exactly = false){
+		if(!is_dir($dir)){
+			return false;
+		}
+
 		$files = scandir($dir);
 
 		foreach($files as $i => $file){
@@ -30,6 +34,10 @@ class Utils{
 	}
 
 	public function scandirs($dir, &$results = array()) {
+		if(!is_dir($dir)){
+			return false;
+		}
+		
 		$files = scandir($dir);
 
 		foreach ($files as $key => $value) {
