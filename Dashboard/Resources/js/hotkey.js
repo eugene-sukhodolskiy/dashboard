@@ -32,7 +32,7 @@ class Hotkey{
 	processor(){
 		const self = this;
 
-		$(document).on('keypress', function(e){
+		$(document).on('keypress, keydown, keyup', function(e){
 			let keys = [];
 			let probableKeys = ['ctrl', 'alt', 'shift', 'meta'];
 			for(let probableKey of probableKeys){

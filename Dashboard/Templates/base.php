@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="/Dashboard/Resources/js/settings.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/project-control.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/hotkey.js"></script>
+	<script type="text/javascript" src="/Dashboard/Resources/js/keynav.js"></script>
 	<script type="text/javascript" src="/Dashboard/Resources/js/app.js"></script>
 </head>
 <body>

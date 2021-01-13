@@ -5,6 +5,7 @@ class Search{
 		this.cards = $(cardSelector);
 		this.statusControlContainer = $(statusControlContainerSelector);
 		this.cardsData = [];
+		this.afterDisplaySearchResult = () => {};
 		this.init();
 	}
 
@@ -48,6 +49,8 @@ class Search{
 		for(let i of filteringItems){
 			this.showCard(i);
 		}
+
+		this.afterDisplaySearchResult();
 	}
 
 	getSearchedStatus(){
@@ -64,6 +67,7 @@ class Search{
 		$(this.cards).each(function(){
 			$(this).parent().show();
 		});
+		this.afterDisplaySearchResult();
 	}
 
 	showCard(card){

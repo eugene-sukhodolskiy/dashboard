@@ -123,14 +123,16 @@ function hotkeyMap(){
 	});
 
 	hotkey.bind(['ctrl', 'q'], keys => {
-		$('.search-cancel').trigger('click');
-		$('.search').trigger('blur');
-	});
-
-	hotkey.bind(['ctrl', 'shift', 'q'], keys => {
-		$('.search').trigger('blur');
-		$('.global-popup-bg.show').trigger('click');
-		$('.popup-mini-bg.show').trigger('click');
+		if($('.global-popup-bg').hasClass('show') || $('.popup-mini-bg').hasClass('show')){
+			$('.global-popup-bg.show').trigger('click');
+			$('.popup-mini-bg.show').trigger('click');
+			return ;
+		}
+		if($('.search').is(':focus') || $('.search').val().length){
+			$('.search-cancel').trigger('click');
+			$('.search').trigger('blur');
+			return ;
+		}
 	});
 
 	hotkey.bind(['ctrl', 'i'], keys => {
@@ -143,16 +145,22 @@ function hotkeyMap(){
 		}
 	});
 
-	hotkey.bind(['ctrl', 'enter'], keys => {
-		$('.project:visible', 0).trigger('click');
+	hotkey.bind(['enter'], keys => {
+		$('.project.selected', 0).trigger('click');
 	});
 
-	// hotkey.bind(['ctrl', 'shift', 'enter'], keys => {
-	// 	console.log($('.project:eq(0)').find('.project-control.root .open-project'));
-	// });
+	hotkey.bind(['ctrl', 'enter'], keys => {
+		window.open($('.project.selected .open-project', 0).attr('href'));
+	});
+
+	keynav = new KeyNav(hotkey);
+	searchObject.afterDisplaySearchResult = () => {
+		keynav.resetSelectPos();
+	}
 }
 
 let settings;
 let searchObject;
 let projectControl;
 let hotkey;
+let keynav;

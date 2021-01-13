@@ -27,6 +27,7 @@ body{
 	background-color: var(--bg-color);
 	color: white;
 	font-family: Roboto;
+	overflow-x: hidden;
 }
 
 .grid{
@@ -51,7 +52,8 @@ body{
   border-bottom: 5px solid transparent;
 }
 
-.project:hover{
+.project:hover,
+.project.selected{
 	background-color: var(--main-hover);
 	box-shadow: 0 0 7px rgba(0, 0, 0, .7);
 }
