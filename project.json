@@ -4,9 +4,9 @@
 	"author": "E. Sukhodolskiy",
 	"release_url": "",
 	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard",
-	"tags": ["fury", "personal", "html", "css", "php", "js"],
+	"tags": ["open source", "fury"],
 	"status": "open",
 	"type": "web",
 	"main_lang": "php",
-	"description": "Dashboard. Simple organization of projects"
+	"description": "It is simple info panel for display base info about your projects on your pc. <a href=\"https://github.com/eugene-sukhodolskiy/dashboard/edit/master/README.md\" target=\"_blank\">How to use</a>"
 }
