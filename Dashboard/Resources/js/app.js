@@ -77,6 +77,7 @@ function hiddenListControl(){
 
 function searchInit(){
 	searchObject = new Search('input.search', '.project', '.status-control');
+
 	$('.project-card-info .tag').on('click', function(e){
 		e.preventDefault();
 		let projectCard = $(this).parent().parent();
@@ -111,6 +112,16 @@ function searchInit(){
 		$(this).hide();
 		$(this).parent().attr('data-status', status);
 		searchObject.search($('input.search').val());
+	});
+
+	// Fix problem https://github.com/eugene-sukhodolskiy/dashboard/issues/50
+	$('input.search').on('keydown', function(e){
+		if(e.key == 'ArrowLeft' || 
+			e.key == 'ArrowRight' || 
+			e.key == 'ArrowDown' || 
+			e.key == 'ArrowUp'){
+			e.preventDefault();
+		}
 	});
 }
 
