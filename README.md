@@ -12,7 +12,7 @@ You can install Dashboard like any site on PHP, so for installing need only Apac
 - `enter` For open description of selected project
 And you can navigations on projects with used keyboard arrows.
 
-## project.json file
+## dashboard.json file (legacy name project.json)
 
 	{
 		"name": "Display name",
@@ -29,10 +29,10 @@ And you can navigations on projects with used keyboard arrows.
 		"description": "This is description of project"
 	}
 
-If some project based in side from folders with projects, you can create empty folder with file project.json and write inside `{ "path_to_project": "path/to/other/folder" }`
+If some project based in side from folders with projects, you can create empty folder with file dashboard.json and write inside `{ "path_to_project": "path/to/other/folder" }`
 
-#### Console app for easy create project.json file
-You can use console script `php dashboard/init-project.php your-project.json` for easy create project.json
+#### Console app for easy create dashboard.json file
+You can use console script `php dashboard/init-project.php` for easy create dashboard.json
 
 ## How to use search field
 - You can text tags with split comma for filtered projects by tags. Example `laravel, vue, open source`

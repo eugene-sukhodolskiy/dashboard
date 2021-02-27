@@ -124,9 +124,13 @@ class Projects extends \Dashboard\Middleware\Model{
 	}
 
 	protected function analize_project_file(&$path_to_dir){
-		$project_file = $path_to_dir . '/project.json';
+		$project_file = $path_to_dir . '/dashboard.json';
+		$project_file_legacy = $path_to_dir . '/project.json';
 		if(!file_exists($project_file)){
-			return null;
+			if(!file_exists($project_file_legacy)){
+				return null;
+			}
+			$project_file = $project_file_legacy;
 		}
 
 		$project_json = json_decode(file_get_contents($project_file), true);

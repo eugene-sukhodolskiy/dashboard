@@ -8,8 +8,6 @@ use Dashboard\Models\Settings;
 
 class Dashboard extends \Dashboard\Middleware\Controller{
 	public function board($filter_status = false){
-		// $git = new GitHub();
-		// dd($git -> auth());
 		$projects = new Projects();
 		$settings = new Settings();
 		$filters = [

@@ -41,7 +41,7 @@ function create_json($data){
 		$dir = getcwd();
 	}
 
-	$dir .= '/project.json';
+	$dir .= '/dashboard.json';
 	return file_put_contents($dir, $json);
 }
 
