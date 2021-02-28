@@ -20,8 +20,7 @@ class Settings extends \Dashboard\Middleware\Model {
 
 	public function get_settings_variants(){
 		$data = [
-			'color-schema' => json_decode(file_get_contents(PROJECT_FOLDER . '/Resources/css/color-schema/index.json')),
-			'bg-texture' => json_decode(file_get_contents(PROJECT_FOLDER . '/Resources/imgs/bg-texture/index.json')),
+			'color-schema' => json_decode(file_get_contents(PROJECT_FOLDER . '/Resources/css/color-schema/index.json'))
 		];
 
 		return $data;

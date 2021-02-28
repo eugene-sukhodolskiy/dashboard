@@ -35,12 +35,6 @@ class Settings{
 		});
 	}
 
-	doSetting_bg_texture(val){
-		const styleTag = $('#style-bg-texture');
-		const tpl = styleTag.attr('data-template');
-		styleTag.html(tpl.replace('{{bg-texture}}', val));
-	}
-
 	doSetting_color_schema(val){
 		const linkTag = $('#link-color-schema');
 		const tpl = linkTag.attr('data-template');

@@ -51,6 +51,14 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 			return $data;
 		});
 
+		// Default type is web
+		$project -> pipe(function($data){
+			if(!isset($data['project']['type']) or !$data['project']['type']){
+				$data['project']['type'] = 'web';
+			}
+			return $data;
+		});
+
 		// IF dashboard.json not exists
 		$project -> pipe(function($data){
 			if(!isset($data['project']['name'])){
@@ -83,11 +91,11 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 
 		// FAVICON
 		$project -> pipe(function($data){
-			if(!isset($project['project']) or !isset($project['project']['type']) or $project['project']['type'] != 'web'){
+			if(!isset($data['project']) or !isset($data['project']['type']) or $data['project']['type'] != 'web'){
 				return $data;
 			}
 
-			if(!isset($data['project']['favicon'])){
+			if(!isset($data['project']['favicon']) or !$data['project']['favicon']){
 				$favicon = $this -> utils() -> deep_search_file($data['path'], 'favicon.');
 
 				if(isset($favicon) and $favicon){

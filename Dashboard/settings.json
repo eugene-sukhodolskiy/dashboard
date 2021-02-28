@@ -1,5 +1,4 @@
 {
-    "color-schema": "accent-style",
-    "bg-texture": "bright-squares",
+    "color-schema": "dark",
     "project-color-in": "border-color"
 }

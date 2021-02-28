@@ -1,11 +1,11 @@
 :root{
-	--bg-color: #010712;
+	--bg-color: #121314;
 	--main-color: #1C1F26;
 	--text-color: #eee;
 	--main-hover: #24262D;
-	--project-description-bg-color: #F2F2F0;
-	--project-description-color: #111;
-	--popup-bg-background-color: #13171FEF;
+	--project-description-bg-color: #111;
+	--project-description-color: #eee;
+	--popup-bg-background-color: #1a1b1df2;
 }
 
 .project{
@@ -13,22 +13,22 @@
 }
 
 .project .description a{
-	color: #1F5AA6;
+	color: #009688;
 }
 
 .project .description .tag{
-	color: var(--main-color);
+	color: #00bcd4;
 }
 
 .project .button,
 .make-project-visible,
 body .button{
-	background-color: #961227;
+	background-color: #009688;
 	color: var(--text-color);
 }
 
 .project .button:hover,
 .make-project-visible:hover,
 body .button:hover{
-	background-color: #24262D;
+	background-color: #00524b;
 }
