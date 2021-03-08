@@ -20,8 +20,8 @@ class Projects extends \Dashboard\Middleware\Model{
 				$dirs = scandir($projects_folder);
 				$projects = [];
 				foreach ($dirs as $i => $item) {
-					if(!is_file($item) and $item != '.' and $item != '..'){
-						$path = $projects_folder . '/' . $item;
+					$path = $projects_folder . '/' . $item;
+					if(!is_file($path) and $item != '.' and $item != '..'){
 						$projects[] = $pinfo -> get_project_info([
 							"name" => $item,
 							"path" => $path
