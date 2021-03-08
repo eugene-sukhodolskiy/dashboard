@@ -28,7 +28,8 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 
 			$data['info_files'] = [
 				'dashboard.json' => $dashboard_json,
-				'package.json' => $this -> get_package_json_file($data['path'])
+				'package.json' => $this -> get_package_json_file($data['path']),
+				'bower.json' => $this -> get_bower_json_file($data['path'])
 			];
 
 			return $data;
@@ -64,26 +65,36 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 			if(!isset($data['project']['name'])){
 				if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['name'])){
 					$data['project']['name'] = $data['info_files']['package.json']['name'];
+				}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['name'])){
+					$data['project']['name'] = $data['info_files']['bower.json']['name'];
 				}
 			}
 			if(!isset($data['project']['ver'])){
 				if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['version'])){
 					$data['project']['ver'] = $data['info_files']['package.json']['version'];
+				}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['version'])){
+					$data['project']['ver'] = $data['info_files']['bower.json']['version'];
 				}
 			}
 			if(!isset($data['project']['author']) or !$data['project']['author']){
 				if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['author'])){
 					$data['project']['author'] = $data['info_files']['package.json']['author'];
+				}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['author'])){
+					$data['project']['author'] = $data['info_files']['bower.json']['author'][0];
 				}
 			}
 			if(!isset($data['project']['git_url'])){
 				if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['homepage'])){
 					$data['project']['git_url'] = $data['info_files']['package.json']['homepage'];
+				}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['homepage'])){
+					$data['project']['git_url'] = $data['info_files']['bower.json']['homepage'];
 				}
 			}
 			if(!isset($data['project']['description'])){
 				if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['description'])){
 					$data['project']['description'] = $data['info_files']['package.json']['description'];
+				}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['description'])){
+					$data['project']['description'] = $data['info_files']['bower.json']['description'];
 				}
 			}
 			return $data;
@@ -172,6 +183,15 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 		}
 
 		return json_decode(file_get_contents($package_json_file), true);
+	}
+
+	public function get_bower_json_file($path_to_dir){
+		$bower_json_file = $path_to_dir . '/bower.json';
+		if(!file_exists($bower_json_file)){
+			return null;
+		}
+
+		return json_decode(file_get_contents($bower_json_file), true);
 	}
 
 	public function get_dashboard_json_file($path_to_dir){
