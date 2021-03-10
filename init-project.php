@@ -29,7 +29,7 @@ function collect_data(){
 	$questions = [
 		'Project name:' => 'name',
 		'Version:' => 'ver',
-		'Author name:' => 'author',
+		'Author [name<email>(site)]:' => 'author',
 		'Tags:' => 'tags',
 		'Project type:' => 'type',
 		'Main language:' => 'main_lang'
