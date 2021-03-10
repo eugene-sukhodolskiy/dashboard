@@ -61,9 +61,23 @@
 				</p>
 			<? endif ?>
 
-			<? if(isset($project['project']['author'])): ?>
+			<? if(isset($project['project']['authors'])): ?>
 				<p class="author">
-					<strong>Author:</strong> <?= $project['project']['author'] ?>
+					<strong>Authors:</strong> 
+					<?php foreach ($project['project']['authors'] as $i => $author): ?>
+						<br>
+						<?php if (isset($author['url']) and $author['url']): ?>
+							<a href="<?= $author['url'] ?>" class="author-link">
+								<?= $author['name'] ?>
+							</a>
+						<? else: ?>
+							<?= $author['name'] ?>
+						<?php endif ?>
+						
+						<? if(isset($author['email']) and $author['email']): ?>
+							&lt;<?= $author['email'] ?>&gt;
+						<? endif ?>
+					<?php endforeach ?>
 				</p>
 			<? endif ?>
 

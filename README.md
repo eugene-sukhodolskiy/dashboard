@@ -17,7 +17,18 @@ And you can navigations on projects with used keyboard arrows.
 	{
 		"name": "Display name",
 		"ver": "1.0",
-		"author": "Author full name",
+		"authors": [
+			{
+				"name": "John Doe",
+				"url": "https://john.doe.com",
+				"email": "john.doe@mail.com"
+			},
+			{
+				"name": "Mr. Anderson",
+				"url": "https://mr.anderson.com",
+				"email": "mr.anderson@mail.com"
+			}
+		],
 		"release_url": "https://link-on-release.host",
 		"git_url": "https://github.com/someuser/reponame",
 		"tags": ["tag1", "tag2", "tag3"],

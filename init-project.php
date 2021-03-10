@@ -1,5 +1,29 @@
 <?php
 
+function parse_author_string($author_string){
+	$author = [
+		'name' => '',
+		'url' => '',
+		'email' => ''
+	];
+
+	if(strpos($author_string, '<') !== false){
+		$parsing = explode('<', $author_string);
+		$parsing = explode('>', $parsing[1]);
+		$author['email'] = $parsing[0];
+	}
+
+	if(strpos($author_string, '(') !== false){
+		$parsing = explode('(', $author_string);
+		$parsing = explode(')', $parsing[1]);
+		$author['url'] = $parsing[0];
+	}
+
+	$author['name'] = trim(str_replace("({$author['url']})", "", str_replace("<{$author['email']}>", '', $author_string)));
+
+	return $author;
+}
+
 function collect_data(){
 	$data = [];
 	$questions = [
@@ -23,6 +47,8 @@ function collect_data(){
 		$data['ver'] = '1.0';
 	}
 
+	$data['authors'] = [ parse_author_string($data['author']) ];
+
 	$data['status'] = "open";
 	$data['project_color'] = null;
 	$data['git_url'] = null;
@@ -30,6 +56,7 @@ function collect_data(){
 	$data['project_color'] = null;
 	$data['favicon'] = null;
 	$data['description'] = null;
+	unset($data['author']);
 
 	return $data;
 }
