@@ -92,12 +92,12 @@
 				</p>
 			<? endif; ?>
 			
-			<? if(isset($project['project']['git_url'])): ?>
+			<? if(isset($project['project']['repository']) and isset($project['project']['repository']['url'])): ?>
 				<p class="git">
-					<strong>Git: </strong>
+					<strong><?= ucfirst($project['project']['repository']['type']) ?>: </strong>
 					<span class="incomplete git-link">
-						<a href="<?= $project['project']['git_url'] ?>" target="_blank">
-							<?= $project['project']['git_url'] ?>
+						<a href="<?= $project['project']['repository']['url'] ?>" target="_blank">
+							<?= $project['project']['repository']['url'] ?>
 						</a>
 					</span>
 				</p>

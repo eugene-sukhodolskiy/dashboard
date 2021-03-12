@@ -30,7 +30,10 @@ And you can navigations on projects with used keyboard arrows.
 			}
 		],
 		"release_url": "https://link-on-release.host",
-		"git_url": "https://github.com/someuser/reponame",
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/john-doe/project"
+		},
 		"tags": ["tag1", "tag2", "tag3"],
 		"status": "open||close",
 		"type": "web||console||app||docs||other",

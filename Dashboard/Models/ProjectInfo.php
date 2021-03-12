@@ -50,6 +50,10 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 		});
 
 		$project -> pipe(function($data){
+			return $this -> git_legacy($data);
+		});
+
+		$project -> pipe(function($data){
 			return $this -> about_project_files_struct($data);
 		});
 
@@ -126,11 +130,9 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 				$data['project']['author'] = $data['info_files']['bower.json']['author'];
 			}
 		}
-		if(!isset($data['project']['git_url'])){
-			if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['homepage'])){
-				$data['project']['git_url'] = $data['info_files']['package.json']['homepage'];
-			}else if(isset($data['info_files']['bower.json']) and isset($data['info_files']['bower.json']['homepage'])){
-				$data['project']['git_url'] = $data['info_files']['bower.json']['homepage'];
+		if(!isset($data['project']['repository'])){
+			if(isset($data['info_files']['package.json']) and isset($data['info_files']['package.json']['repository'])){
+				$data['project']['repository'] = $data['info_files']['package.json']['repository'];
 			}
 		}
 		if(!isset($data['project']['description'])){
@@ -233,6 +235,21 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 		}
 
 		$data['project']['authors'] = $authors;
+		return $data;
+	}
+
+	public function git_legacy($data){
+		$p = $data['project'];
+		if(isset($p['repository']) and is_array($p['repository']) and count($p['repository'])){
+			return $data;
+		}
+
+		if(isset($p['git_url'])){
+			$data['project']['repository'] = [
+				"type" => "git",
+				"url" => $p['git_url']
+			];
+		}
 		return $data;
 	}
 }

@@ -9,7 +9,10 @@
 		}
 	],
 	"release_url": "http://dashboard/",
-	"git_url": "https://github.com/eugene-sukhodolskiy/dashboard",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/eugene-sukhodolskiy/dashboard"
+	},
 	"tags": ["open source", "fury"],
 	"status": "open",
 	"type": "web",

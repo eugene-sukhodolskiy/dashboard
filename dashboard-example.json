@@ -14,7 +14,10 @@
 		}
 	],
 	"release_url": "",
-	"git_url": "https://github.com/someuser/reponame",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/john-doe/project"
+	},
 	"tags": ["tag1", "tag2", "tag3"],
 	"status": "open",
 	"type": "web||console||app||docs||other",
