@@ -40,6 +40,19 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.project a').on('click', function(){
+		const link = $(this);
+		let curEl = link;
+		// search project element
+		while(100){
+			curEl = $(curEl.parent());
+			if(curEl.hasClass('project')){
+				curEl.find('.open-project').addClass('no-info');
+				break;
+			}
+		}
+	});
+
 	searchInit();
 	hotkeyMap();
 	hiddenListControl();

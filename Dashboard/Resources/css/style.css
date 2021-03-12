@@ -449,6 +449,16 @@ input.search{
 	padding-bottom: 20px;
 }
 
+.project-title .repository-link{
+	transition-property: opacity;
+	transition-duration: .2s;
+}
+
+.project-title .repository-link:hover{
+	text-decoration: none;
+	opacity: .7;
+}
+
 @media (min-width: 1900px){
 	.col-xxl{
 		flex: 0 0 16.666667%;

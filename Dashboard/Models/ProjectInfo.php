@@ -54,6 +54,10 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 		});
 
 		$project -> pipe(function($data){
+			return $this -> normalize_git_link($data);
+		});
+
+		$project -> pipe(function($data){
 			return $this -> about_project_files_struct($data);
 		});
 
@@ -250,6 +254,15 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 				"url" => $p['git_url']
 			];
 		}
+		return $data;
+	}
+
+	public function normalize_git_link($data){
+		if(isset($data['project']['repository']) and isset($data['project']['repository']['url'])){
+			list(, $url) = explode('http', $data['project']['repository']['url']);
+			$data['project']['repository']['url'] = 'http' . $url;
+		}
+
 		return $data;
 	}
 }
