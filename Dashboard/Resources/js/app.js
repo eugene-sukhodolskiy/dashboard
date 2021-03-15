@@ -12,12 +12,14 @@ $(document).ready(function(){
 		}else{
 			$(this).find('.description').addClass('show');
 			$('.global-popup-bg').addClass('show');
+			$('.close-project-description').addClass('show');
 		}
 	});
 
-	$('.global-popup-bg').on('click', function(){
+	$('.global-popup-bg, .close-project-description').on('click', function(){
 		$('.project .description.show').removeClass('show');
-		$(this).removeClass('show');
+		$('.close-project-description').removeClass('show');
+		$('.global-popup-bg').removeClass('show');
 	});
 
 	$('.open-project').on('click', function(){

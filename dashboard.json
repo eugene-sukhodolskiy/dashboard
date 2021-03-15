@@ -8,12 +8,14 @@
 			"email": "eugene.sukhodolskiy@gmail.com"
 		}
 	],
-	"release_url": "http://dashboard/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/eugene-sukhodolskiy/dashboard"
 	},
 	"tags": ["open source", "fury"],
+	"links": {
+		"how_to_use": "https://github.com/eugene-sukhodolskiy/dashboard/blob/master/README.md"
+	},
 	"status": "open",
 	"type": "web",
 	"main_lang": "php",

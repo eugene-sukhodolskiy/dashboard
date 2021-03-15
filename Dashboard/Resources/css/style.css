@@ -47,7 +47,7 @@ body{
 	position: relative;
 	overflow: hidden;
 	color: var(--text-color);
-  border-bottom: 5px solid transparent;
+	border-bottom: 5px solid transparent;
 }
 
 .project:hover,
@@ -107,9 +107,11 @@ body .button:hover{
 	height: 225px;
 	display: block;
 	position: fixed;
-	left: -100%;
-	top: 0;
-	width: 800px;
+	top: 110vh;
+	margin-left: -600px;
+	left: 50%;
+	max-width: 1200px;
+	width: 100%;
 	background-color: var(--project-description-bg-color);
 	z-index: 100;
 	height: 100%;
@@ -117,14 +119,17 @@ body .button:hover{
 	box-sizing: border-box;
 	padding: 50px;
 	font-size: 18px;
-	border-right: 8px solid transparent;
+	border-top: 8px solid transparent;
 	border-color: inherit;
-	transition-property: opacity, left;
+	max-height: 100vh;
+	overflow-y: auto;
+	opacity: 0;
+	transition-property: opacity, top;
 	transition-duration: .3s;
 }
 
 .project .description.show{
-	left: 0;
+	top: 0;
 	opacity: 1;
 }
 
@@ -249,7 +254,7 @@ header .total{
 
 .button.small-button{
 	padding: 1px 7px;
-  background-color: var(--main-color);
+	background-color: var(--main-color);
 }
 
 input.search{
@@ -337,15 +342,6 @@ input.search{
 
 .project-control.root .button.open-project{
 	padding: 6px 7px;
-}
-
-.project-description-info{
-	filter: brightness(2.5);
-	font-size: 14px;
-	padding-top: 10px;
-	max-height: 200px;
-	overflow-y: auto;
-	display: block;
 }
 
 .popup-mini-container{
@@ -459,9 +455,157 @@ input.search{
 	opacity: .7;
 }
 
+.close-project-description{
+	display: inline-block;
+	border: 0;
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+	line-height: 50px;
+	color: var(--text-color);
+	position: fixed;
+	left: 50%;
+	z-index: 110;
+	margin-left: 500px;
+	top: -100px;
+	background: transparent;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition-property: opacity, visibility, top;
+	transition-duration: .3s;
+}
+
+.close-project-description.show{
+	opacity: .7;
+	top: 50px;
+	visibility: visible;
+}
+
+.close-project-description:hover{
+	opacity: 1;
+}
+
+.close-project-description:focus{
+	outline: none;
+}
+
+.authors-list{
+	margin: 30px 0;
+}
+
+.authors-list .authors{
+	list-style-type: none;
+	padding: 0;
+	margin-top: 10px;
+}
+
+.authors-list .authors .author{
+	padding: 20px;
+	text-align: center;
+	background-color: var(--main-color);
+	color: var(--text-color);
+	display: inline-block;
+	font-size: 13px;
+	max-width: 320px;
+	border-radius: 5px;
+	width: 100%;
+	margin-right: 5px;
+}
+
+.authors-list .authors .author .name{
+	font-size: 18px;
+}
+
+.authors-list .authors .author .email{
+	margin-top: 5px;
+}
+
+.project .description .line{
+	margin: 12px 0;
+}
+
+.project .description .heading{
+	font-size: 17px;
+	filter: brightness(.8);
+	display: inline-block;
+	margin-right: 8px;
+	letter-spacing: 1;
+}
+
+.text-description{
+	font-size: 16px;
+}
+
+.text-description .text{
+	background-color: var(--main-color);
+	padding: 15px;
+	border-radius: 5px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+.custom-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.about .last-update .status{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.links-container{
+	margin-top: 30px;
+}
+
+.links{
+	border: 1px dashed var(--main-color);
+	margin-top: 10px;
+}
+
+.links td,
+.links th{
+	border: 1px dashed var(--main-color);
+	padding: 6px 10px;
+}
+
 @media (min-width: 1900px){
 	.col-xxl{
 		flex: 0 0 16.666667%;
-    max-width: 16.666667%;
+		max-width: 16.666667%;
+	}
+}
+
+@media (max-width: 1200px){
+	.project .description{
+		max-width: 800px;
+		margin-left: -400px;
+	}
+
+	.close-project-description{
+		margin-left: 300px;
+	}
+}
+
+@media (max-width: 800px){
+	.project .description{
+		max-width: 100%;
+		margin-left: 0;
+		left: 0;
+	}
+
+	.close-project-description{
+		margin-left: 0;
+		left: auto;
+		right: 50px;
 	}
 }

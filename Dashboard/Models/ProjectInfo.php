@@ -65,6 +65,13 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 			return $this -> normalize_author_info($data);
 		});
 
+		$project -> pipe(function($data){
+			if(!isset($data['project']['links']) or !is_array($data['project']['links'])){
+				$data['project']['links'] = [];
+			}
+			return $data;
+		});
+
 		return $project -> through_the_pipe($project_data);
 	}
 

@@ -15,7 +15,7 @@ And you can navigations on projects with used keyboard arrows.
 ## dashboard.json file (legacy name project.json)
 
 	{
-		"name": "Display name",
+		"name": "Project name",
 		"ver": "1.0",
 		"authors": [
 			{
@@ -29,16 +29,19 @@ And you can navigations on projects with used keyboard arrows.
 				"email": "mr.anderson@mail.com"
 			}
 		],
-		"release_url": "https://link-on-release.host",
+		"links": {
+			"release_url": "https://myproject.com",
+			"docs": "https://github.com/john-doe/project/blob/master/README.md"
+		},
 		"repository": {
 			"type": "git",
 			"url": "https://github.com/john-doe/project"
 		},
 		"tags": ["tag1", "tag2", "tag3"],
-		"status": "open||close",
+		"status": "open",
 		"type": "web||console||app||docs||other",
 		"project_color": "#f60",
-		"favicon": null||"https://link-on-release.local/favicon.png",
+		"favicon": null,
 		"main_lang": "php",
 		"description": "This is description of project"
 	}

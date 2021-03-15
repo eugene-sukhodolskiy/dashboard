@@ -44,3 +44,5 @@
 
 <div class="popup-mini-bg hidden-list-bg"></div>
 <div class="popup-mini-bg hidden-settings-bg"></div>
+
+<button class="close-project-description">&times;</button>
