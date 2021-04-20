@@ -20,7 +20,7 @@
 	</div>
 
 	<!-- DESCRIPTION FOR POPUP -->
-	<?= $this -> join('layouts/project-description.php', [
+	<?= $this -> join('layouts/project.description.php', [
 		'project' => $project
 	]) ?>
 	<!-- END DESCRIPTION -->

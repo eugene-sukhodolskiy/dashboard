@@ -47,8 +47,10 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 	}
 
 	public function visibility_project($project_name, $visibility_flag){
-		$projects = new Projects();
+		$project_name = urldecode($project_name);
 		$visibility_flag = $visibility_flag == 'false' ? false : true;
+		
+		$projects = new Projects();
 		if($visibility_flag){
 			return $projects -> remove_from_hidden_list($project_name);
 		}else{

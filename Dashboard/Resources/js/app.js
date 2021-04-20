@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $.ajaxSetup({
+  	cache: false
+  });
+
 	$('.create-new-project').on('submit', function(e){
 		if(!$('.create-project').val().length){
 			return e.preventDefault();
@@ -70,6 +74,7 @@ function hiddenListControl(){
 			$('.hidden-list .loader-spin').hide();
 			let html = '';
 			for(let project of hiddenProjects){
+				project = decodeURI(project);
 				html += `<li class="hidden-project">
 					<span class="project-name">${project}</span>
 					<button class="button make-project-visible" data-project-name="${project}" data-change-visibility="true">Make visible</button>
