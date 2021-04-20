@@ -24,10 +24,10 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 			return $data;
 		});
 
-		// Default type is web
+		// Default type
 		$project -> pipe(function($data){
 			if(!isset($data['project']['type']) or !$data['project']['type']){
-				$data['project']['type'] = 'web';
+				$data['project']['type'] = 'documents';
 			}
 			return $data;
 		});

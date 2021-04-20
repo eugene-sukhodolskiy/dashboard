@@ -13,7 +13,7 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 		$filters = [
 			'status' => $filter_status
 		];
-		// dd($projects -> get_projects_list($filters));
+
 		return $this -> new_template() -> make('project.list', [
 			'projects' => $projects -> get_projects_list($filters),
 			'filters' => $filters,
@@ -49,7 +49,7 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 	public function visibility_project($project_name, $visibility_flag){
 		$project_name = urldecode($project_name);
 		$visibility_flag = $visibility_flag == 'false' ? false : true;
-		
+
 		$projects = new Projects();
 		if($visibility_flag){
 			return $projects -> remove_from_hidden_list($project_name);
