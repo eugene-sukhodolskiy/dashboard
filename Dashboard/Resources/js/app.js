@@ -29,21 +29,33 @@ $(document).ready(function(){
 	$('.open-project').on('click', function(){
 		$(this).addClass('no-info');
 	});
-
+	
 	$('.project').each(function(){
 		const propForProjectColor = SETTINGS['project-color-in'];
-		let fav = $(this).find('.favicon', 0);
-		let project = $(this);
+		const project = $(this);
 		if(project.attr('data-color') != 'undefined'){
 			project.css(propForProjectColor, project.attr('data-color'));
-		}else{
-			if(fav.length){
-				new Color(fav, function(c){
-					let rgba = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)';
-					project.css(propForProjectColor, rgba);
-				});
-			}
 		}
+	});
+
+	$('img.app-favicon').on('error', function(e){
+		const path = $(this).attr('data-favicon-path');
+		if(typeof path == 'undefined'){
+			return false;
+		}
+		const src = '/?url=' + path;
+		const elms = $('[data-favicon-path="' + path + '"]');
+		$(elms).attr('src', src);
+		$(elms).removeAttr('data-favicon-path');
+		if($(elms).parent().parent().hasClass('project')){
+			$(elms).on('load', function(){
+				setFavColor(this);
+			});
+		}
+	});
+
+	$('.project > .project-title > img.app-favicon').on('load', function(){
+		setFavColor(this);
 	});
 
 	$('.project a').on('click', function(){
@@ -65,6 +77,22 @@ $(document).ready(function(){
 	settings = new Settings();
 	projectControl = new ProjectControl();
 });
+
+function setFavColor(favImg){
+	const propForProjectColor = SETTINGS['project-color-in'];
+	const fav = $(favImg);
+	const project = $(favImg).parent().parent();
+	if(project.attr('data-color') != 'undefined'){
+		project.css(propForProjectColor, project.attr('data-color'));
+	}else{
+		if(project.hasClass('project') && fav.length){
+			new Color(fav, function(c){
+				let rgba = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', 1)';
+				project.css(propForProjectColor, rgba);
+			});
+		}
+	}
+}
 
 function hiddenListControl(){
 	$('.open-hidden-list').on('click', function(){

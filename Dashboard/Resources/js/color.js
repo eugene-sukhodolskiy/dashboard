@@ -10,7 +10,7 @@ class Color{
 		var context = canvas.getContext('2d');
 		var imgObj = new Image();
 		imgObj.crossOrigin = 'anonymous';
-		imgObj.src = "/?url=" + src;
+		imgObj.src = "/?url=" + src.replace('/?url=', '');
 		var x = 0;
 		var y = 0;
 		let self = this;

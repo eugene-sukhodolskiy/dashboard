@@ -23,9 +23,13 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 	}
 
 	public function throw_img($url){
+		if(strpos($url, '//') === 0){
+			$url = str_replace('//', 'http://', $url);
+		}
 		$img = file_get_contents($url);
 		$format = explode('.', $url);
 		$format = $format[count($format) - 1];
+		$filename = basename($url);
 
 		switch($format) {
 	    case "gif": $ctype="image/gif"; break;
@@ -33,12 +37,13 @@ class Dashboard extends \Dashboard\Middleware\Controller{
 	    case "jpeg":
 	    case "jpg": $ctype="image/jpeg"; break;
 	    case "svg": $ctype="image/svg+xml"; break;
-	    case "ico": $ctype="image/ico"; break;
+	    case "ico": $ctype="image/x-icon"; break;
 	    default:
 		}
 
 		header('Content-type: ' . $ctype);
-		echo $img;
+		header('Content-Disposition: attachment; filename="' . $filename . '"');
+		return $img;
 	}
 
 	public function save_setting($setting_name, $value){

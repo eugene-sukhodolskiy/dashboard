@@ -1,6 +1,10 @@
 <h3 class="project-title">
 	<? if(isset($project['project']['favicon']) and strlen($project['project']['favicon'])): ?>
-		<img src="<?= $project['project']['favicon'] ?>" class="favicon">
+		<img 
+			src="<?= $project['project']['favicon'] ?>" 
+			<? if(isset($project['project']['favicon_path'])): ?> data-favicon-path="<?= $project['project']['favicon_path'] ?>" <? endif ?>
+			class="favicon app-favicon"
+		>
 	<? endif ?>
 	<? if(isset($project['project']['main_lang'])): ?>
 		<img src="/Dashboard/Resources/imgs/langs/file_type_<?= $project['project']['main_lang'] ?>@3x.png" class="favicon" title="<?= $project['project']['main_lang'] ?>">

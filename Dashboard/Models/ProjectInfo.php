@@ -157,18 +157,15 @@ class ProjectInfo extends \Dashboard\Middleware\Model{
 	}
 
 	public function search_favicon($data){
-		if(!isset($data['project']) or !isset($data['project']['type']) or $data['project']['type'] != 'web'){
-			return $data;
-		}
-
 		if(!isset($data['project']['favicon']) or !$data['project']['favicon']){
 			$favicon = $this -> utils() -> deep_search_file($data['path'], 'favicon.');
 
 			if(isset($favicon) and $favicon){
 				$path_to_fav = explode($data['name'], $favicon['path']);
-				$path_to_fav[1] = 'http://' . $data['name'] . $path_to_fav[1];
+				$path_to_fav[1] = '//' . $data['name'] . $path_to_fav[1];
 				unset($path_to_fav[0]);
 				$data['project']['favicon'] = implode($data['name'], $path_to_fav);
+				$data['project']['favicon_path'] = $favicon['path'];
 			}
 		}
 		return $data;
